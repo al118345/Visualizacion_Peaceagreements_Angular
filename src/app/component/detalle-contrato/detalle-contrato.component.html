@@ -1,0 +1,133 @@
+<app-menu></app-menu>
+<div class="listado_aux">
+  <!--si el producto fuera null no se muestra nada para evitar errores de ejecución-->
+  <div *ngIf="contrato != null; then mostrarcontrato "> </div>
+  <ng-template #mostrarcontrato>
+    <ul class="list-group ">
+      <li class="list-group-item transparent">
+
+        <div class="main-div panel_personalizado">
+          <div class="group">
+            <div class="row"><h3 class="titulo col-md-12">Datos del contrato <strong>{{contrato.name}}</strong></h3></div>
+            <div  class="row" >
+              <h5 class="titulo  col-md-4"><b>Titular del contrato</b></h5>
+              <h4 class="center_vertcal col-md-8">{{contrato.owner_partner.name}} </h4>
+            </div>
+            <div  class="row" >
+              <h5 class="titulo  col-md-4"><b>Persona pagadora</b></h5>
+              <h4 class="center_vertcal col-md-8">{{contrato.bank_account.owner.name}} </h4>
+            </div>
+            <div  class="row" >
+              <h5 class="titulo  col-md-4"><b>Potencia contratada</b></h5>
+              <h4 class="center_vertcal col-md-8"> {{contrato.contracted_power}} kW</h4>
+            </div>
+            <div  class="row" >
+              <h5 class="titulo  col-md-4"><b>Tarifa de acceso</b></h5>
+              <h4 class="center_vertcal col-md-8">{{contrato.tariff.name}} </h4>
+            </div>
+            <div  class="row" >
+              <h5 class="titulo  col-md-4"><b>Cuenta de pago (IBAN)</b></h5>
+              <h4 class="center_vertcal col-md-8">{{contrato.bank_account.printable_iban}} </h4>
+            </div>
+            <div  class="row" >
+
+              <h5 class="titulo col-md-4"><b>¿Desea modificar el IBAN?</b></h5>
+
+              <div class="col-md-3">
+                <button type="submit"  (click)="modificar_iban()" class="btn btn-primary">Modificar IBAN</button>
+              </div>
+              <div class="col-md-3">
+                <button type="submit"  (click)="imprimir_mandato()" class="btn btn-primary">Imprimir mandato</button>
+              </div>
+            </div>
+
+
+
+
+            <form id="form" (ngSubmit)="f.form.valid && activar_sin_papel()" #f="ngForm" novalidate class="texto-medio">
+
+
+
+              <div  class="row" >
+                <h5 class="titulo col-md-4"><b>¿Desea recibir las facturas por E-MAIL?</b></h5>
+
+                <div class="col-md-3">
+                  <div class="col-md-10">
+                  <input type="email" class="form-control texto-medio"    name="correo" placeholder="..." [(ngModel)]="model.correo" #nif="ngModel" required>
+                  </div>
+                </div>
+                <div class="col-md-3">
+                  <button type="submit"   class="btn btn-primary">Activar sin papel</button>
+                  <img *ngIf="loading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA=="/>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </li>
+      <li class="list-group-item transparent">
+        <div class="main-div panel_personalizado">
+          <div class="group">
+            <div class="row"><h3 class="titulo  col-md-12">Datos de notificación</h3></div>
+            <!--<div  class="row" >
+              <h5 class=" titulo col-md-4"><b>Nombre</b></h5>
+              <h4 class=" col-md-8">SIN NOMBRE </h4>
+            </div>
+            <div  class="row" >
+                <h5 class=" titulo col-md-4"><b>Dirección</b></h5>
+                <h4 class=" col-md-8">{{contrato.notification_address.street}} </h4>
+            </div>-->
+            <div  class="row" >
+              <h5 class=" titulo col-md-4"><b>Correo electrónico</b></h5>
+              <h4 class=" col-md-8">{{contrato.notification_address.email}} </h4>
+            </div>
+            <div  class="row" >
+              <h5 class=" titulo col-md-4"><b>Teléfono</b></h5>
+              <h4 class=" col-md-8">{{telefonosNotificacion()}} </h4>
+            </div>
+          </div></div>
+      </li>
+      <li class="list-group-item transparent">
+        <div class="main-div panel_personalizado">
+          <div class="group">
+            <div class="row"> <h3 class="titulo col-md-12">Información del punto de suministro</h3></div>
+            <div  class="row" >
+              <h5 class="titulo  col-md-4"><b>CUPS</b></h5>
+              <h4 class=" col-md-8">{{contrato.cups.name}} </h4>
+            </div>
+            <div  class="row" >
+              <h5 class="titulo  col-md-4"><b>Dirección del punto de suministro</b></h5>
+              <h4 class=" col-md-8">{{contrato.cups.street}} </h4>
+            </div>
+            <div  class="row" >
+              <h5 class="titulo  col-md-4"><b>Distribuidora</b></h5>
+              <h4 class=" col-md-8">{{contrato.dso.name}} </h4>
+            </div>
+            <div  class="row" >
+              <h5 class=" titulo col-md-4"><b>Número de contrato de la distribuidora</b></h5>
+              <h4 class=" col-md-8">{{contrato.dso_reference}} </h4>
+            </div>
+            <div  class="row" >
+              <h5 class="titulo col-md-4"><b>Teléfono de averías</b></h5>
+              <h4 class=" col-md-8">{{contrato.dso_phone}} </h4>
+            </div>
+          </div>
+        </div>
+      </li>
+      <li class="list-group-item transparent">
+        <div class="main-div panel_personalizado center">
+          <div  class="row" >
+
+            <div class="col-md-12">
+              <button type="submit" (click)="volverListadoContratos()" class="center_vertcal btn btn-primary">Volver</button>
+
+            </div>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </ng-template>
+  <div class="footer">
+    2018 &copy; Electra Energía, S.A.U.
+  </div>
+</div>

@@ -1,0 +1,20 @@
+.grafica{
+    padding: 20px;
+}
+
+.btn.btn-primary {
+    background-image: url('assets/img/login/degradado_superior.jpg');
+    background-size: 115%;
+    background-repeat: repeat-y;
+    border: none;
+    /*background: #f0ad4e none repeat scroll 0 0;
+    border-color: #f0ad4e;*/
+    color: #ffffff;
+    font-size: 20px;
+    width: 80%;
+    height: 50px;
+    line-height: 50px;
+    margin-top: 10px;
+    padding: 0;
+    text-align: center;
+  }

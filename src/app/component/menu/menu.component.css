@@ -1,0 +1,26 @@
+.image_sup
+{
+  width: 15%;
+  min-width: 200px;
+  padding-right: 25px;
+}
+
+.fondo  {
+  background-image: url('assets/img/login/degradado_superior.jpg');
+  background-size: 100%;
+  background-repeat: repeat-y;
+  border: none;
+}
+
+@media (max-width: 768px){
+  .nav-item {
+    text-align: center;
+  }
+}
+
+.btn.btn-primary{
+  background-image: null;
+  background: transparent !important; 
+  border: 0px !important;
+}
+

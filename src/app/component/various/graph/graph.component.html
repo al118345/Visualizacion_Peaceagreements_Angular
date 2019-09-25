@@ -1,0 +1,20 @@
+
+<div class="row">
+    <div class="col-md-1"></div>
+    <div class="col-md-10">
+        <canvas class="grafica" baseChart 
+                [datasets]="lineChartData"
+                [labels]="lineChartLabels"
+                [options]="lineChartOptions"
+                [legend]="lineChartLegend"
+                [chartType]="lineChartType"
+                ></canvas>
+      </div>
+      <div class="col-md-1"></div>
+    </div>
+    <div class="row">
+        <div class="col-md-12"> 
+      
+      <button class="btn btn-primary" (click)="randomizeType()">{{TipoGrafica}}</button>
+    </div>
+  </div>
