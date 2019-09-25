@@ -12,6 +12,7 @@
   },
   "private": true,
   "dependencies": {
+    "@angular-extensions/model": "^8.1.0",
     "@angular/common": "^8.2.7",
     "@angular/compiler": "^8.2.7",
     "@angular/fire": "^5.2.1",
