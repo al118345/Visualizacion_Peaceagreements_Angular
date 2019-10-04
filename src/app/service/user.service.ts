@@ -7,6 +7,7 @@ import {Api} from '../constants/api';
 import {AngularFirestore} from '@angular/fire/firestore';
 import {AngularFireAuth} from '@angular/fire/auth';
 import * as firebase from 'firebase';
+import {FirebaseAuth} from '@angular/fire';
 
 @Injectable()
 export class UserService {
@@ -80,7 +81,6 @@ export class UserService {
       })
     })
   }
-
   updateCurrentUser(value) {
     return new Promise<any>((resolve, reject) => {
       const user = firebase.auth().currentUser;

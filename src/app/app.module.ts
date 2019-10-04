@@ -40,7 +40,9 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { environment } from '../environments/environment';
 import { AdminComponent } from './component/admin/admin.component';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatButtonModule, MatInputModule, MatSliderModule, MatDialogModule } from '@angular/material';
+import {  CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 @NgModule({
   declarations: [
@@ -67,6 +69,10 @@ import { AdminComponent } from './component/admin/admin.component';
     AdminComponent
   ],
   imports: [
+    MatButtonModule,
+    MatInputModule,
+    MatSliderModule,
+    MatDialogModule,
     BrowserModule,
     FormsModule,
     HttpClientModule,
@@ -75,7 +81,7 @@ import { AdminComponent } from './component/admin/admin.component';
     NgxPaginationModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule, // imports firebase/firestore, only needed for database features
-    AngularFireAuthModule // imports firebase/auth, only needed for auth features
+    AngularFireAuthModule, BrowserAnimationsModule // imports firebase/auth, only needed for auth features
   ],
   providers: [UsersGuard,
     UserService,
@@ -84,6 +90,7 @@ import { AdminComponent } from './component/admin/admin.component';
     DataService,
     FacturasService,
     DatePipe ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  schemas:      [ CUSTOM_ELEMENTS_SCHEMA ]
 })
 export class AppModule { }

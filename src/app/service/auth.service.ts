@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import 'rxjs/add/operator/toPromise';
 import { AngularFireAuth } from '@angular/fire/auth';
 import * as firebase from 'firebase/app';
+import {AngularFirestore} from '@angular/fire/firestore';
 
 
 @Injectable({
@@ -9,7 +10,7 @@ import * as firebase from 'firebase/app';
 })
 export class AuthService {
 
-  constructor(
+  constructor(public db: AngularFirestore,
     public afAuth: AngularFireAuth
   ) { }
 
@@ -57,11 +58,19 @@ export class AuthService {
     })
   }
 
-  doRegister(value) {
+  doRegister(nif, name, password, email) {
     return new Promise<any>((resolve, reject) => {
-      firebase.auth().createUserWithEmailAndPassword(value.email, value.password)
+      firebase.auth().createUserWithEmailAndPassword(email, password)
         .then(res => {
-          resolve(res);
+          resolve(res){
+            this.db.collection('users').add({
+              nif: nif,
+              name: name,
+              email: email,
+              rol: ''
+            });
+
+          };
         }, err => reject(err))
     })
   }
@@ -84,6 +93,16 @@ export class AuthService {
         reject();
       }
     });
+  }
+  sendEmail(value) {
+    return new Promise<any>((resolve, reject) => {
+      const user = firebase.auth().currentUser;
+      if ( user.uid === '') {
+        alert('correcto');
+      } else {
+        user.sendEmailVerification()
+      }
+    })
   }
 
 }

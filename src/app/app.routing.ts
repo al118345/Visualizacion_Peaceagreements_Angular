@@ -11,11 +11,13 @@ import { FacturasContratoComponent } from './component/listado-facturas/facturas
 import {UsuarioComponent} from './component/usuario/usuario.component';
 import {ListarCambioCuentaComponent} from './component/listado-cambio-cuenta/listar-cambio-cuenta/listar-cambio-cuenta.component';
 import {ListadoCambioCuentaComponent} from './component/listado-cambio-cuenta/listado-cambio-cuenta.component';
+import {AdminComponent} from './component/admin/admin.component';
 
 
 
 const appRoutes: Routes = [
   { path: 'app-login', component: LoginComponent },
+  { path: 'app-admin', component: AdminComponent },
   { path: 'app-registro', component: RegistroComponent },
   { path: 'app-ejemplo-factura', component: EjemploFacturaComponent },
   { path: 'app-aceptar-contrato', component: AceptarContratoComponent },

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
 import {RegisterService} from '../../service/register.service';
 import {RootObject} from '../../model/Register';
+import {AuthService} from '../../service/auth.service';
 
 @Component({
   selector: 'app-registro',
@@ -13,7 +14,7 @@ export class RegistroComponent implements OnInit {
   loading = false;
   errorNIF = '';
   errorCUPS = '';
-  errorContract = '';
+  errorName = '';
   errorEmail = '';
   errorEmail2 = '';
   errorConditions = '';
@@ -21,69 +22,48 @@ export class RegistroComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private authenticationService: RegisterService) { this.ok = false; }
+    private authenticationService: AuthService) { this.ok = false; }
 
   ngOnInit() {
   }
 
   // proceso de registro, loading muestra el simbolo de carga encima del boton.
   register() {
-    var respuesta;
+    let respuesta;
     this.loading = true;
-    respuesta = this.authenticationService.register(this.model.nif, 
-      this.model.contract, 
-      this.model.cups, 
-      this.model.email, 
+    respuesta = this.authenticationService.doRegister(this.model.nif,
+      this.model.name,
+      this.model.password,
+      this.model.email,
       this.model.rep_email,
-      this.model.accept_conditions) 
-    if (respuesta.result.render.done){
+      this.model.accept_conditions)
+    if (respuesta.result.render.done) {
       this.ok = true;
-      //this.router.navigate(['/app-confirm-registro',this.model.email]);
     } else {
       // register failed
       this.errorNIF = '';
-      this.errorCUPS = '';
-      this.errorContract = '';
+      this.errorName = '';
       this.errorEmail = '';
       this.errorEmail2 = '';
       this.errorConditions = '';
-      for (let errores in respuesta.result.render.errors){
-        switch (errores.toString()){
-          case  "FormConfirm.accept_conditions":{
-            this.errorConditions = "Se deben aceptar las condiciones de uso." + "\n";          break;
-          }
-          case  "FormConfirm.contract":{
-            this.errorContract = respuesta.result.render.errors[errores][0];
-            break;
-          }
-          case  "FormConfirm.cups":{
-            this.errorCUPS = respuesta.result.render.errors[errores][0];
-            break;
-          }
-          case  "FormConfirm.email":{
-            this.errorEmail = respuesta.result.render.errors[errores][0];
-            break;
-          }
-          case  "FormConfirm.email2":{
-            this.errorEmail2 = respuesta.result.render.errors[errores][0];
-            break;
-          }
-          case  "FormConfirm.nif": {
-            this.errorNIF = respuesta.result.render.errors[errores][0];
-            break;
-          }
-        }
-          
-        
+      if (this.model.nif === null) {
+        this.errorName = 'Nif incorrecto'
       }
-      //this.error = 'Usuario o contraseña incorrecto';
+      if (this.model.name === null) {
+        this.errorName = 'Nif incorrecto'
+      }
+      if (this.model.name === null) {
+        this.errorName = 'Nif incorrecto'
+      }
+      if (this.model.name === null) {
+        this.errorName = 'Nif incorrecto'
+      }
+      if (this.model.name === null) {
+        this.errorName = 'Nif incorrecto'
+      }
       this.loading = false;
     }
   }
-  ejemplo_factura() {
-    this.router.navigate(['/app-ejemplo-factura']);
-  }
-
   login() {
     this.router.navigate(['/app-login']);
   }
