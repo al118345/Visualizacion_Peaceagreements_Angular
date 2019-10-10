@@ -103,7 +103,7 @@ export class AuthService {
   sendEmail() {
     return new Promise<any>((resolve, reject) => {
       const user = firebase.auth().currentUser;
-      if ( user.uid === '') {
+      if ( user.emailVerified === true) {
         alert('no envio email');
       } else {
         alert('envio email');
