@@ -30,7 +30,9 @@ export class LoginComponent implements OnInit {
     this.loading = true;
     this.authService.doLogin(this.model.username, this.model.password)
       .then(res => {
-        //alert( JSON.stringify( res))
+        // alert( JSON.stringify( res))
+        // console.log(JSON.stringify( res));
+        alert(res.user.emailVerified === true)
         }, err => {
         console.log(err);
         this.errorMessage = err.message;
