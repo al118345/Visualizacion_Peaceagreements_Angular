@@ -37,10 +37,10 @@
           <div class="form-group">
               <label for="cups">Password</label>
               <input type="text" class="form-control" name="code" placeholder=""
-              [(ngModel)]="model.Password" #cups="ngModel" required
+              [(ngModel)]="model.password" #cups="ngModel" required
               >
           </div>
-          <div *ngIf="errorPassword" class="alert alert-danger">{{errorPassword}}</div>
+          <div *ngIf="errorpassword" class="alert alert-danger">{{errorpassword}}</div>
               <div class="form-group">
                 <label for="email">Correo electrónico</label>
                 <input type="email" class="form-control" name="email" placeholder="subastas@ejemplo.es"

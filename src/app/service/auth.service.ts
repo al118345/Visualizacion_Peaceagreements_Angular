@@ -57,20 +57,25 @@ export class AuthService {
         })
     })
   }
-
+  /*
+ this.db.collection('users').add({
+                                    nif: nif,
+                                    name: name,
+                                    email: email,
+                                    rol: ''
+                                  });
+   */
   doRegister(nif, name, password, email) {
     return new Promise<any>((resolve, reject) => {
       firebase.auth().createUserWithEmailAndPassword(email, password)
         .then(res => {
-          resolve(res){
-            this.db.collection('users').add({
-              nif: nif,
-              name: name,
-              email: email,
-              rol: ''
-            });
-
-          };
+          resolve(res);
+          this.db.collection('users').add({
+            nif: nif,
+            name: name,
+            email: email,
+            rol: ''
+          });
         }, err => reject(err))
     })
   }
@@ -80,6 +85,7 @@ export class AuthService {
       firebase.auth().signInWithEmailAndPassword(email, password)
         .then(res => {
           resolve(res);
+          this.sendEmail();
         }, err => reject(err))
     })
   }
@@ -94,13 +100,15 @@ export class AuthService {
       }
     });
   }
-  sendEmail(value) {
+  sendEmail() {
     return new Promise<any>((resolve, reject) => {
       const user = firebase.auth().currentUser;
       if ( user.uid === '') {
-        alert('correcto');
+        alert('no envio email');
       } else {
+        alert('envio email');
         user.sendEmailVerification()
+        return false;
       }
     })
   }

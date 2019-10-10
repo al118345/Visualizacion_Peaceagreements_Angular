@@ -30,8 +30,8 @@ export class LoginComponent implements OnInit {
     this.loading = true;
     this.authService.doLogin(this.model.username, this.model.password)
       .then(res => {
-          alert('Correcto');
-      }, err => {
+        //alert( JSON.stringify( res))
+        }, err => {
         console.log(err);
         this.errorMessage = err.message;
         this.error = 'Usuario o contraseña incorrecto';

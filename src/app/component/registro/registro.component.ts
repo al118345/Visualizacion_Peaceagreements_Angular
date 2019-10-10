@@ -13,7 +13,7 @@ export class RegistroComponent implements OnInit {
   model: any = {};
   loading = false;
   errorNIF = '';
-  errorCUPS = '';
+  errorpassword = '';
   errorName = '';
   errorEmail = '';
   errorEmail2 = '';
@@ -26,17 +26,31 @@ export class RegistroComponent implements OnInit {
 
   ngOnInit() {
   }
+  isValidPasswordString(pass) {
+    const pwdRegEx = new RegExp('(?:(?:(?=.*?[0-9])(?=.*?[-!@#$%&*ˆ+=_])|(?:(?=.*?[0-9])|(?=.*?[A-Z])|(?=.*?[-!@#$%&*ˆ+=_])))|(?=.*' +
+      '?[a-z])(?=.*?[0-9])(?=.*?[-!@#$%&*ˆ+=_]))[A-Za-z0-9-!@#$%&*ˆ+=_]{6,15}');
+
+    return pwdRegEx.test(pass);
+  }
 
   // proceso de registro, loading muestra el simbolo de carga encima del boton.
   register() {
     let respuesta;
+    let correcto = true;
     this.loading = true;
-    respuesta = this.authenticationService.doRegister(this.model.nif,
-      this.model.name,
-      this.model.password,
-      this.model.email,
-      this.model.rep_email,
-      this.model.accept_conditions)
+    alert(this.model.password)
+    if (!this.isValidPasswordString(this.model.password)) {
+      alert(777);
+      correcto = false;
+    }
+    if (correcto === true) {
+      respuesta = this.authenticationService.doRegister(this.model.nif,
+        this.model.name,
+        this.model.password,
+        this.model.email);
+      this.ok = true;
+    }
+    /*
     if (respuesta.result.render.done) {
       this.ok = true;
     } else {
@@ -61,8 +75,10 @@ export class RegistroComponent implements OnInit {
       if (this.model.name === null) {
         this.errorName = 'Nif incorrecto'
       }
+
       this.loading = false;
-    }
+    }*/
+    this.loading = false;
   }
   login() {
     this.router.navigate(['/app-login']);
