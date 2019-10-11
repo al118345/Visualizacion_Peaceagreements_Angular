@@ -1,4 +1,5 @@
 
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 <div class="login_aux">
     <div class="login-form">
       <div class="panel">
@@ -6,15 +7,16 @@
       </div>
       <div class="main-div panel_personalizado">
         <div class="panel">
-          <h1>Acceso a la Oficina Virtual
+          <h1>Acceso a Web Subastas
           </h1>
         </div>
         <form id="Login">
           <form name="form" (ngSubmit)="f.form.valid && login()" #f="ngForm" novalidate>
             <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !username.valid }">
-              <label for="username">Usuario</label>
-              <input type="text" class="form-control" name="username" [(ngModel)]="model.username" #username="ngModel" required />
-              <div *ngIf="f.submitted && !username.valid" class="help-block"> </div>
+              <label for="username">E-mail</label>
+              <input type="text" class="form-control" name="username" [(ngModel)]="model.username" #username="ngModel"  placeholder="example@websubastas.com" required />
+              <div *ngIf="f.submitted && !username.valid" class="help-block"> El e-mail es necesario</div>
+
             </div>
             <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !password.valid }">
               <label for="password">Contraseña</label>
@@ -34,7 +36,7 @@
 
           </form>
 
-          <button type="submit" class="btn btn-primary"  style="margin-bottom:10px;" (click)="tryGoogleLogin()">Acceder con Google</button>
+          <button type="submit" class="btn btn-primary"  style="margin-bottom:10px;" (click)="tryGoogleLogin()">Acceder con  Google <i class="fa fa-google"></i>  </button>
 
 
           <!--<div class="forgot">

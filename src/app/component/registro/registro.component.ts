@@ -14,6 +14,7 @@ export class RegistroComponent implements OnInit {
   loading = false;
   errorNIF = '';
   errorpassword = '';
+  errorpassword2 = '';
   errorName = '';
   errorEmail = '';
   errorEmail2 = '';
@@ -40,7 +41,20 @@ export class RegistroComponent implements OnInit {
     this.loading = true;
     alert(this.model.password)
     if (!this.isValidPasswordString(this.model.password)) {
-      alert(777);
+      this.errorpassword = 'El password no cumple con las condiciones de seguridad. Necesita 6 dígitos como mínimo y por lo menos una ' +
+        'mayúscula y una minúscula'
+      correcto = false;
+    }
+    if (this.model.password === this.model.password2) {
+      this.errorpassword2 = 'No coínciden los passwords.'
+      correcto = false;
+    }
+    if (this.model.email === this.model.errorEmail2) {
+      this.errorEmail2 = 'No coincide el email'
+      correcto = false;
+    }
+    if (this.model.accept_conditions) {
+      this.errorConditions = 'No has aceptado las condiciones'
       correcto = false;
     }
     if (correcto === true) {

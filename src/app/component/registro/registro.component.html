@@ -9,7 +9,7 @@
                           <div class="panel"><h1>Confirmación alta
                             </h1>
                             <div class="panel text">Se ha dado de alta en la web de subastas. En lo próximos minutos recibirá en la dirección de correo
-                              <b>{{this.model.email}}</b> las credenciales de acceso</div>
+                              <b>{{this.model.email}}</b> el correo de confirmación</div>
                           </div>
                             <button type="submit"  (click)="login()" class="btn btn-primary">Iniciar Sesión</button>
 
@@ -24,34 +24,72 @@
 
           <div class="form-group">
             <label for="nif">NIF</label>
-            <input type="text" class="form-control" name="nif" placeholder="12345678X"
+            <input type="text" class="form-control" name="nif" placeholder="A00000000"
             [(ngModel)]="model.nif" #nif="ngModel" required>
+            <div *ngIf="f.submitted && !nif.valid" class="help-block" class="alert alert-danger" > El NIF es necesario para la facturación</div>
           </div>
           <div *ngIf="errorNIF" class="alert alert-danger">{{errorNIF}}</div>
+
+            <div class="form-group">
+              <label for="direccionfacturacion">Dirección Facturación</label>
+              <input type="text" class="form-control" name="direccionfacturacion" placeholder="Calle XXX Número 21 Castellón de la Plana Castellon CP 12550"
+                     [(ngModel)]="model.direccionfacturacion" #direccionfacturacion="ngModel" required>
+              <div *ngIf="f.submitted && !direccionfacturacion.valid" class="help-block" class="alert alert-danger" > El Dirección de Facturación es necesario para la facturación</div>
+            </div>
+            <div *ngIf="errordireccionfacturacion" class="alert alert-danger">{{errordireccionfacturacion}}</div>
+
+
+
           <div class="form-group">
-            <label for="name">Nombre</label>
-            <input type="text" class="form-control" name="name" placeholder=""
-            [(ngModel)]="model.name" #contract="ngModel" required>
+            <label for="razonsocial">Razón Social</label>
+            <input type="text" class="form-control" name="razonsocial" placeholder="Empresa, S.A.U"
+            [(ngModel)]="model.razonsocial" #razonsocial="ngModel" required>
           </div>
-          <div *ngIf="errorName" class="alert alert-danger">{{errorName}}</div>
+            <div *ngIf="f.submitted && !razonsocial.valid" class="help-block" class="alert alert-danger" > La razón social es necesario para la facturación</div>
+          <div *ngIf="errorrazonsocial" class="alert alert-danger">{{errorrazonsocial}}</div>
+
+            <div class="form-group">
+              <label for="telefono">Teléfono</label>
+              <input type="text" class="form-control" name="telefono" placeholder=""
+                     [(ngModel)]="model.telefono" #telefono="ngModel" required>
+            </div>
+            <div *ngIf="f.submitted && !telefono.valid" class="help-block" class="alert alert-danger" > El teléfono es necesario</div>
+            <div *ngIf="errortelefono" class="alert alert-danger">{{errortelefono}}</div>
+
+
           <div class="form-group">
-              <label for="cups">Password</label>
-              <input type="text" class="form-control" name="code" placeholder=""
-              [(ngModel)]="model.password" #cups="ngModel" required
+              <label for="Password">Password</label>
+              <input type="password" class="form-control" name="code" placeholder=""
+              [(ngModel)]="model.password" #password="ngModel" required
               >
+            <div *ngIf="f.submitted && !password.valid" class="help-block" class="alert alert-danger" > El password es necesario</div>
           </div>
           <div *ngIf="errorpassword" class="alert alert-danger">{{errorpassword}}</div>
+
+            <div class="form-group">
+              <label for="password2"> Repite el Password</label>
+              <input type="password" class="form-control" name="code" placeholder=""
+                     [(ngModel)]="model.password2" #password2="ngModel" required
+              >
+              <div *ngIf="f.submitted && !password2.valid" class="help-block" class="alert alert-danger" > Es necesario repetir el password </div>
+            </div>
+            <div *ngIf="errorpassword2" class="alert alert-danger">{{errorpassword2}}</div>
+
+
               <div class="form-group">
                 <label for="email">Correo electrónico</label>
                 <input type="email" class="form-control" name="email" placeholder="subastas@ejemplo.es"
                 [(ngModel)]="model.email" #email="ngModel" required>
+                <div *ngIf="f.submitted && !email.valid" class="help-block" class="alert alert-danger" > El email es obligatorio</div>
               </div>
               <div *ngIf="errorEmail" class="alert alert-danger">{{errorEmail}}</div>
               <div class="form-group">
                   <label for="rep_email">Repetir correo electrónico</label>
                   <input type="email" class="form-control" name="rep_email" placeholder="electraenergia@ejemplo.es"
                   [(ngModel)]="model.rep_email" #rep_email="ngModel" required>
-                </div>
+                <div *ngIf="f.submitted && !rep_email.valid" class="help-block" class="alert alert-danger" > El email es obligatorio</div>
+
+              </div>
                 <div *ngIf="errorEmail2" class="alert alert-danger">{{errorEmail2}}</div>
           <div class="form-row">
             <div class="form-check col-md-6">
@@ -77,7 +115,7 @@
     </div>
   </div>
   <div class="footer">
-      2018 &copy; Electra Energía, S.A.U.
+      2018 &copy; Rubén Pérez Ibáñez
     </div>
 </div>
 
