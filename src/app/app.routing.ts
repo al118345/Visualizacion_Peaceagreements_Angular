@@ -12,6 +12,7 @@ import {UsuarioComponent} from './component/usuario/usuario.component';
 import {ListarCambioCuentaComponent} from './component/listado-cambio-cuenta/listar-cambio-cuenta/listar-cambio-cuenta.component';
 import {ListadoCambioCuentaComponent} from './component/listado-cambio-cuenta/listado-cambio-cuenta.component';
 import {AdminComponent} from './component/admin/admin.component';
+import {CompletarDatosComponent} from './component/registro/completar-datos/completar-datos.component';
 
 
 
@@ -22,6 +23,7 @@ const appRoutes: Routes = [
   { path: 'app-ejemplo-factura', component: EjemploFacturaComponent },
   { path: 'app-aceptar-contrato', component: AceptarContratoComponent },
   { path: 'app-listado-contratos', component: ListadoContratosComponent, canActivate: [UsersGuard] },
+  { path: 'app-completar-datos', component: CompletarDatosComponent, canActivate: [UsersGuard] },
   { path: 'app-usuario', component: UsuarioComponent, canActivate: [UsersGuard] },
   { path: 'app-home', component: HomeComponent, canActivate: [UsersGuard] },
   { path: 'app-detalle-contrato', component: DetalleContratoComponent , canActivate: [UsersGuard]},

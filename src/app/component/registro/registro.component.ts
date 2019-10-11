@@ -39,7 +39,6 @@ export class RegistroComponent implements OnInit {
     let respuesta;
     let correcto = true;
     this.loading = true;
-    alert(this.model.password)
     if (!this.isValidPasswordString(this.model.password)) {
       this.errorpassword = 'El password no cumple con las condiciones de seguridad. Necesita 6 dígitos como mínimo y por lo menos una ' +
         'mayúscula y una minúscula'
@@ -59,39 +58,13 @@ export class RegistroComponent implements OnInit {
     }
     if (correcto === true) {
       respuesta = this.authenticationService.doRegister(this.model.nif,
-        this.model.name,
+        this.model.direccionfacturacion,
+        this.model.razonsocial,
+        this.model.telefono,
         this.model.password,
         this.model.email);
       this.ok = true;
     }
-    /*
-    if (respuesta.result.render.done) {
-      this.ok = true;
-    } else {
-      // register failed
-      this.errorNIF = '';
-      this.errorName = '';
-      this.errorEmail = '';
-      this.errorEmail2 = '';
-      this.errorConditions = '';
-      if (this.model.nif === null) {
-        this.errorName = 'Nif incorrecto'
-      }
-      if (this.model.name === null) {
-        this.errorName = 'Nif incorrecto'
-      }
-      if (this.model.name === null) {
-        this.errorName = 'Nif incorrecto'
-      }
-      if (this.model.name === null) {
-        this.errorName = 'Nif incorrecto'
-      }
-      if (this.model.name === null) {
-        this.errorName = 'Nif incorrecto'
-      }
-
-      this.loading = false;
-    }*/
     this.loading = false;
   }
   login() {

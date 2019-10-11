@@ -1,0 +1,617 @@
+<p>completar-datos works!</p>
+
+<div class="registry_aux">
+  <div class="registry-form">
+    <div class="panel">
+      <img class="imagen_tam" src="assets/img/login/logoelectrablanco.png">
+    </div>
+    <div class="main-div panel_personalizado">
+      <div *ngIf="ok == true else registro">
+        <div class="panel"><h1>Confirmación alta
+        </h1>
+          <div class="panel text">Correcto</div>
+        </div>
+        <button type="submit"  (click)="login()" class="btn btn-primary">Iniciar Sesión</button>
+
+
+      </div>
+      <ng-template #registro>
+        <div class="panel">
+          <h1>Activación
+          </h1>
+        </div>
+        <form id="form" (ngSubmit)="f.form.valid && register()" #f="ngForm" novalidate>
+          <div class="form-group">
+            <label for="nif">NIF</label>
+            <input type="text" class="form-control" name="nif" placeholder="A00000000"
+                   [(ngModel)]="model.nif" #nif="ngModel" required>
+            <div *ngIf="f.submitted && !nif.valid" class="help-block" class="alert alert-danger" > El NIF es necesario para la facturación</div>
+          </div>
+
+          <div *ngIf="errorNIF" class="alert alert-danger">{{errorNIF}}</div>
+
+          <div class="form-group">
+            <label for="direccionfacturacion">Dirección Facturación</label>
+            <input type="text" class="form-control" name="direccionfacturacion" placeholder="Calle XXX Número 21 Castellón de la Plana Castellon CP 12550"
+                   [(ngModel)]="model.direccionfacturacion" #direccionfacturacion="ngModel" required>
+            <div *ngIf="f.submitted && !direccionfacturacion.valid" class="help-block" class="alert alert-danger" > El Dirección de Facturación es necesario para la facturación</div>
+          </div>
+          <div *ngIf="errordireccionfacturacion" class="alert alert-danger">{{errordireccionfacturacion}}</div>
+
+
+
+          <div class="form-group">
+            <label for="razonsocial">Razón Social</label>
+            <input type="text" class="form-control" name="razonsocial" placeholder="Empresa, S.A.U"
+                   [(ngModel)]="model.razonsocial" #razonsocial="ngModel" required>
+          </div>
+          <div *ngIf="f.submitted && !razonsocial.valid" class="help-block" class="alert alert-danger" > La razón social es necesario para la facturación</div>
+          <div *ngIf="errorrazonsocial" class="alert alert-danger">{{errorrazonsocial}}</div>
+
+          <div class="form-group">
+            <label for="telefono">Teléfono</label>
+            <input type="text" class="form-control" name="telefono" placeholder=""
+                   [(ngModel)]="model.telefono" #telefono="ngModel" required>
+          </div>
+          <div *ngIf="f.submitted && !telefono.valid" class="help-block" class="alert alert-danger" > El teléfono es necesario</div>
+          <div *ngIf="errortelefono" class="alert alert-danger">{{errortelefono}}</div>
+
+
+
+
+
+          <div class="form-row">
+            <div class="form-check col-md-6">
+              <a target="_blank" href="assets/docs/Condiciones_Uso_OV_EESAU.pdf" download="Condiciones de Uso Oficina Virtual Electra Energía, SAU.pdf">Ver condiciones de la web</a>
+
+            </div>
+            <div class="form-check col-md-6">
+              <input class="form-check-input" type="checkbox" name="accept_conditions"
+                     [(ngModel)]="model.accept_conditions" #accept_conditions="ngModel">
+              <label class="form-check-label" for="accept_conditions" required>
+                Aceptar condiciones
+              </label>
+            </div>
+          </div>
+          <div *ngIf="errorConditions" class="alert alert-danger">{{errorConditions}}</div>
+          <div class="form-group">
+            <button type="submit" class="btn btn-primary">Activar</button>
+          </div>
+        </form>
+      </ng-template>
+
+
+    </div>
+  </div>
+  <div class="footer">
+    2018 &copy; Rubén Pérez Ibáñez
+  </div>
+</div>
+
+
+
+<!--<h2 class="title title-2 wow fadeIn" data-wow-delay="0.3s">      {{'empresa.medio.parrafo1'  }}  </h2>-->
+
+<!--  Introducción a la factura
+<div class="block-5 bg-2 indent-3">
+
+  <h2 class="title title-2 wow fadeIn" data-wow-delay="0.3s">      {{'factura.introduccion.titulo.sinpapel.texto'|trans | raw }}
+  </h2>
+
+  <div class="box box-2 indent">
+    <h4> {{'factura.introduccion.subtitulo.sinpapel.texto'|trans | raw }} </h4>
+    {{'factura.introduccion.explicacion.sinpapel.texto'|trans | raw }}
+    <div class="row">
+      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 wow fadeIn" data-wow-delay="0.3s">
+
+        <ul class="list list-1">
+
+          <li> {{'factura.introduccion.listaMejoras.1.sinpapel.texto'|trans | raw }}</li>
+          <li> {{'factura.introduccion.listaMejoras.2.sinpapel.texto'|trans | raw }}</li>
+          <li> {{'factura.introduccion.listaMejoras.3.sinpapel.texto'|trans | raw }}</li>
+
+
+        </ul>
+      </div>
+
+      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 wow fadeIn" data-wow-delay="0.3s">
+
+        <ul class="list list-1">
+
+          <li> {{'factura.introduccion.listaMejoras.1.right.sinpapel.texto'|trans | raw }}</li>
+          <li> {{'factura.introduccion.listaMejoras.2.right.sinpapel.texto'|trans | raw }}</li>
+          <li> {{'factura.introduccion.listaMejoras.3.right.sinpapel.texto'|trans | raw }}</li>
+
+        </ul>
+      </div>
+
+    </div>
+  </div>
+  <h4>El descuento se aplicará a todos aquellos contratos que tengan contratada  una potencia menor a 15,1 kW y se aplicará a partir de los consumos de septiembre de 2016.</h4>
+  <h4>Si no cumple estos requisitos, por favor póngase en contacto con la oficina comercial. </h4>
+  {# Comentado para posteriormente añadir este codigo junto con una explicación #}
+  {#
+  <div class="row">
+    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 wow fadeIn" data-wow-delay="0.3s">
+      <div class="box box-2 indent">
+        <h4>Proin ornare, arcu nec tempus tris <br>tique, massa dolor port</h4>
+        <p>Nunc vitae leo felis. Ut mperdiet nunc sit amet tortor em per ornare. Nulla felis neque, viverra eu lectus quis, ultric es convallis dolor. Quisque blandit ac elit vitae varius. In euismod nisl a nulla feugiat ullamcorper</p>
+      </div>
+    </div>
+    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 wow fadeIn" data-wow-delay="0.4s">
+      <div class="box box-2 indent">
+        <h4>Praesent eu placerat ante Nunc in <br>sem sed elit feugiat interdu</h4>
+        <p>Nulla felis neque, viverra eu lectus quis, ultric es convallis dolor. Quisque blandit ac elit vitae varius. In euismod nisl a nulla feugiat ullamcorper sit amet at ipsum. Maecenas eros lorem, semper a odio et, dapibus </p>
+      </div>
+    </div>
+  </div>
+  #}
+</div>
+
+
+
+
+
+
+
+
+<!--Ejemplo de factura  ->
+<div class="row"   style="margin-top: 5%">
+  <div class=" col-sm-12 col-centered"   >
+    <!-- Este apartado corresponde a la factura  ->
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">
+          {{'factura.introduccion'|trans | raw }}
+        </h3>
+      </div>
+
+      <!-- parte de arriba Información empresa  ->
+      <div id="empresa"   onmouseover="showInfo('info_empresa','empresa');" >
+        <div class="row" >
+          <div class="col-sm-12" >
+            <!-- parte de arriba Información empresa  ->
+            <div class="ih-item square effect6 from_top_and_bottom  img-responsive" style="border: 0px !important;width: 100%!important;height: 100%!important;"><a href="#">
+              <img class="img-responsive"  src=" {{ asset('img/factura/titulo.JPG') }}" alt="img">
+              <div class="info" style="background:rgba(15,56,119,0.3) !important">
+              </div> </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- fin información empresa  ->
+
+
+
+      <!-- Información relacionada con los datos del titular  ->
+      <div class="row"  >
+        <div id="factura" onmouseover="showInfo('info_factura','factura');" >
+          <div class="col-sm-12 " >
+            <div class=" ih-item square effect6 from_top_and_bottom  img-responsive" style="border: 0px !important;width: 100%!important;height: 100%!important;"><a href="#">
+              <img class="img-responsive"  src="  {{ asset('img/factura/datosdeltitular.JPG') }}"  alt="suministro">
+              <div class="info" style="background:rgba(15,56,119,0.3) !important">
+
+              </div></a></div>
+          </div>
+        </div>
+
+      </div>
+      <!-- fin datos tiular  ->
+
+      <!--    Datos de la factura  ->
+      <div class="row" >
+        <div id="suministro" onmouseover="showInfo('info_suministro','suministro');"  >
+          <div class="col-sm-12 "    >
+            <div class=" ih-item square effect6 from_top_and_bottom  img-responsive" style="border: 0px !important;width: 100%!important;height: 100%!important;"><a href="#">
+              <img class="img-responsive"  src="  {{ asset('img/factura/datossuminitro.jpg') }}"  alt="suministro">
+              <div class="info" style="background:rgba(15,56,119,0.3) !important">
+
+              </div></a>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- fin datos factura  ->
+
+      <div id="kw"  onmouseover="showInfo('info_kw','kw');" >
+        <div class="row">
+          <div class="col-sm-12 "    >
+            <div class=" ih-item square effect6 from_top_and_bottom  img-responsive" style="border: 0px !important;width: 100%!important;height: 100%!important;"><a href="#">
+              <img class="img-responsive"  src="  {{ asset('img/factura/baseimponible.JPG') }}"  alt="suministro">
+              <div class="info" style="background:rgba(15,56,119,0.3) !important">
+
+              </div></a></div>
+
+          </div>
+        </div>
+      </div>
+      {#
+      <div class="row" >
+        <div class="col-sm-6 "    >
+          <div id="total"   onmouseover="showInfo('info_total','observaciones');" >
+            <div class=" ih-item square effect6 from_top_and_bottom  img-responsive" style="border: 0px !important;width: 100%!important;height: 100%!important;"><a href="#">
+              <img class="img-responsive"  src="  {{ asset('img/total.JPG') }}"  alt="suministro">
+              <div class="info" style="background:rgba(15,56,119,0.3) !important">
+
+
+              </div></a></div>
+          </div>
+
+        </div>
+        <div id="observaciones"   onmouseover="showInfo('info_observaciones','observaciones');" >
+          <div class=" col-sm-offset-1 col-sm-5 "    >
+            <div class=" ih-item square effect6 from_top_and_bottom  img-responsive" style="border: 0px !important;width: 100%!important;height: 100%!important;"><a href="#">
+              <img class="img-responsive"  src="  {{ asset('img/observaciones.JPG') }}"  alt="suministro">
+              <div class="info"  style="background:rgba(15,56,119,0.3) !important">
+
+
+              </div></a></div>
+
+          </div>
+        </div>
+
+
+      </div>
+      #}
+
+      <div id="lectura"   onmouseover="showInfo('info_lectura','lectura');" >
+        <div class="row" >
+          <div class="col-sm-12 "    >
+            <div class=" ih-item square effect6 from_top_and_bottom  img-responsive" style="border: 0px !important;width: 100%!important;height: 100%!important;"><a href="#">
+              <img class="img-responsive"  src="  {{ asset('img/factura/informacion1.JPG') }}"  alt="lectura">
+              <div class="info"     style="background:rgba(15,56,119,0.3) !important">
+
+              </div></a></div>
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+{% block javascripts %}
+{{ parent() }}
+<script>
+  var mensaje = "guia";
+  function showInfo(iddiv,idpos)
+  {
+    var welcome = document.getElementById(iddiv);
+    var wel = document.getElementById(idpos);
+
+    welcome.style.display = 'block';
+    var tmp=document.getElementById(idpos);
+    var arriba=tmp.offsetTop;
+    var unidad=1;
+    while (tmp=tmp.offsetParent)
+    {
+      unidad=unidad+1;
+      arriba += tmp.offsetTop;
+      if (unidad==2)
+      {
+        break;
+      }
+    }
+    welcome.style.marginTop=arriba+"px";
+    if(mensaje!=iddiv) {
+      hideinfo(mensaje);
+      mensaje = iddiv;
+    }
+  }
+
+  function hideinfo(iddiv)
+  {
+    var welcome = document.getElementById(iddiv);
+    welcome.style.display = 'none';
+  }
+</script>
+{% endblock %}
+
+
+
+
+
+
+
+{% endblock %}
+
+{% block sidebar %}
+
+
+
+{# Info_Empresa#}
+<div id="guia" style="display: block;">
+  <div class="row" style="margin-top: 5%">
+    <div class="col-sm-12 " >
+      <div class="panel panel-primary" style="background: #f6f6ee">
+        <div class="panel-heading" style=" background-color: black !important;">
+          <div class="text-center"> <i class="fa fa-arrow-circle-right fa-1x"></i> Interactúa con tu factura.</div>
+        </div>
+        <div   style="background: #f6f6ee">
+          <p class="text-justify"  style="margin-top: 5%;margin-left: 5%;margin-right: 5%;"><small>  {{'factura.introduccion.explicacion.factura.1.texto'|trans | raw }}</small><br />
+          <p class="text-justify"  style="margin-top: 5%;margin-left: 5%;margin-right: 5%;"> <small> {{'factura.introduccion.explicacion.factura.2.texto'|trans | raw }}
+          </SMALL></p>
+          <p class="text-justify"  style="margin-top: 5%;margin-left: 5%;margin-right: 5%;"> <small>   {{'factura.introduccion.explicacion.factura.previo.texto'|trans | raw }}
+          </SMALL></p>
+
+          <address style="margin-top: 10%;margin-left: 5%;margin-right: 5%;">
+
+            <p class="text-center">
+              {{'factura.introduccion.comercial'|trans | raw }}
+              <a href="mailto:{{'factura.introduccion.correo.comercial'|trans | raw }}"> <small> {{'factura.introduccion.correo.comercial'|trans | raw }}</small></a> </br>
+            </p>
+          </address>
+          <address style="margin-top: 10%;margin-left: 5%;margin-right: 5%;">
+            {{'factura.introduccion.oficinacentral'|trans | raw }}
+            <a href="mailto:{{'factura.introduccion.correo.tecnico'|trans | raw }}"> <small> {{'factura.introduccion.correo.tecnico'|trans | raw }}</small></a> </br>
+            </p>
+          </address>
+
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+{# Inf#}
+<div id="info_empresa" style="display:none;">
+  <div class="row" style="margin-top: 5%">
+    <div class="col-sm-12 " >
+      <div class="panel panel-primary" style="background: #f6f6ee">
+        <div class="panel-heading" style=" background-color: black !important;">
+          <div class="text-center"> <i class="fa fa-arrow-circle-right fa-1x"></i>INFORMACIÓN DE CONTACTO</div>
+        </div>
+        <div   style="background: #f6f6ee">
+
+
+          <p class="text-justify"  style="margin-top: 5%;margin-left: 5%;margin-right: 5%;"><small>{{'factura.introduccion.explicacion.factura.accion1.1.texto'|trans | raw }}</small><br />
+          <p class="text-justify"  style="margin-top: 5%;margin-left: 5%;margin-right: 5%;"> <small>{{'factura.introduccion.explicacion.factura.accion1.2.texto'|trans | raw }} </SMALL></p>
+          <address style="margin-top: 10%;margin-left: 5%;margin-right: 5%;">
+
+            <p class="text-center">
+              {{'factura.introduccion.comercial'|trans | raw }}
+              <a href="mailto:{{'factura.introduccion.correo.comercial'|trans | raw }}"> <small> {{'factura.introduccion.correo.comercial'|trans | raw }}</small></a> </br>
+            </p>
+          </address>
+          <address style="margin-top: 10%;margin-left: 5%;margin-right: 5%;">
+            {{'factura.introduccion.oficinacentral'|trans | raw }}
+            <a href="mailto:{{'factura.introduccion.correo.tecnico'|trans | raw }}"> <small> {{'factura.introduccion.correo.tecnico'|trans | raw }}</small></a> </br>
+            </p>
+          </address>
+
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+{# Explicacion total de la factura#}
+<div id="info_factura" style="display:none;">
+  <div class="row" style="margin-top: 5%">
+    <div class="col-sm-12 " >
+      <div class="panel panel-primary" style="background: #f6f6ee">
+        <div class="panel-heading" style=" background-color: black !important;">
+          <div class="text-center"> <i class="fa fa-arrow-circle-right fa-1x"></i>{{'factura.introduccion.correo.factura.datos.titual.titulofactura.texto'|trans | raw }}</div>
+        </div>
+        <div   style="background: #f6f6ee">
+
+          <p class="text-justify"  style="margin-top: 5%;margin-left: 5%;margin-right: 5%;"><small> {{'factura.introduccion.correo.factura.datos.explicacion.1.texto'|trans | raw }}
+          </small><br />
+            <ul><li><p><strong><small>{{'factura.introduccion.correo.factura.datos.explicacion.2.texto'|trans | raw }}</small></p></li>
+          <li><p><small><strong>{{'factura.introduccion.correo.factura.datos.explicacion.3.texto'|trans | raw }}</p></li>
+          <li><p><small><strong>{{'factura.introduccion.correo.factura.datos.explicacion.4.texto'|trans | raw }}</small></p></li>
+          <li><p><small><strong>{{'factura.introduccion.correo.factura.datos.explicacion.5.texto'|trans | raw }}</small></p></li>
+          <li><p><small><strong>{{'factura.introduccion.correo.factura.datos.explicacion.6.texto'|trans | raw }}</small></p></li>
+          <li><p><small><strong>{{'factura.introduccion.correo.factura.datos.explicacion.7.texto'|trans | raw }}</small></p></li>
+          <li><p><small><strong>{{'factura.introduccion.correo.factura.datos.explicacion.8.texto'|trans | raw }}</small></p></li>
+
+          </ul>
+          <p class="text-justify"  style="margin-top: 5%;margin-left: 5%;margin-right: 5%;"> <small>{{'factura.introduccion.correo.factura.datos.explicacion.9.texto'|trans | raw }} </SMALL></p>
+          <address style="margin-top: 10%;margin-left: 5%;margin-right: 5%;">
+
+            <p class="text-center">
+              {{'factura.introduccion.comercial'|trans | raw }}
+              <a href="mailto:{{'factura.introduccion.correo.comercial'|trans | raw }}"> <small> {{'factura.introduccion.correo.comercial'|trans | raw }}</small></a> </br>
+            </p>
+          </address>
+          <address style="margin-top: 10%;margin-left: 5%;margin-right: 5%;">
+            {{'factura.introduccion.oficinacentral'|trans | raw }}
+            <a href="mailto:{{'factura.introduccion.correo.tecnico'|trans | raw }}"> <small> {{'factura.introduccion.correo.tecnico'|trans | raw }}</small></a> </br>
+            </p>
+          </address>
+
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+{# Explicacion datos del suministro#}
+<div id="info_suministro" style="display:none;">
+  <div class="row" style="margin-top: 5%">
+    <div class="col-sm-12 " >
+      <div class="panel panel-primary" style="background: #f6f6ee">
+        <div class="panel-heading" style=" background-color: black !important;">
+
+
+          <div class="text-center"> <i class="fa fa-arrow-circle-right fa-1x"></i>    {{'factura.introduccion.correo.factura.datos.titual.1.texto'|trans | raw }}
+          </div>
+        </div>
+        <div   style="background: #f6f6ee">
+          <p class="text-justify"  style="margin-top: 5%;margin-left: 5%;margin-right: 5%;"><small>En esta parte de la factura aparecen los datos del titular del suministro y los datos que nos permiten identificar el propio suministro:
+          </small><br />
+            <ul>
+              <li><p><small><strong>Titular (*): </strong> Nombre del titular del punto de suministro. Esta persona puede no coincidir con el pagador del contrato. Para realizar un cambio de titular, siga las indicaciones que aparecen en el siguiente
+          <a href="{{ path('formularios') }}"> enlace.</a></small></p></li>
+
+
+          <li><p><small><strong>Dirección del suministro (*): </strong>  Dirección completa de ubicación del punto de suministro.</small></p></li>
+          <li><p><small><strong>Población (*): </strong>Población en la que se encuentra el punto de suministro.</small></p></li>
+
+          <li><p><small><strong>D.N.I./C.I.F (*):</strong> Nº de DNI o CIF del titular del punto de suministro. </small>
+          </p></li>
+          <li><p><small><strong>Referencia Catastral (*):</strong> Referencia catastral de la ubicación del punto de suministro.
+          </small></p></li>
+          <li><p><small><strong>Nº CONTRATO:</strong> Marcado en color  <strong style="color: #ffcc00  !important;">amarillo</strong>.  Número de identificación del cliente. <strong>Necesario para darse de alta en la FACTURA SIN PAPEL.</strong>
+          </small></p></li>
+
+          <li><p><small><strong>Tarifa:</strong> Tarifa eléctrica correspondiente a la potencia contratada en el punto de suministro.</small></p></li>
+          <li><p><small><strong>Tensión:</strong> Tensión a la que se encuentra el suministro.</small></p></li>
+          <li><p><small><strong> Nº de contador.</strong></small></p></li>
+          <li><p><small><strong>CNAE (*):</strong>  Actividad principal del lugar para el que se ha contratado el suministro.</small></p></li>
+          <li><p><small><strong>CUPS:</strong> Marcado en color  <strong style="color: #ffcc00  !important;">amarillo</strong>. Código Universal del Punto de Suministro, <strong>necesario para darse de alta en la FACTURA SIN PAPEL.</strong>
+          </small></p></li>
+
+          <li><p><small><strong>  Potencia:</strong> Potencia contratada.
+          </small></p></li>
+
+          <li><p><small><strong>  Discriminación:</strong>   Número de periodos tarifarios correspondientes a la tarifa contratada.
+
+          </small></p></li>
+
+          </ul>
+          <p class="text-justify"  style="margin-top: 5%;margin-left: 5%;margin-right: 5%;"> <small>(*) Todos estos datos deben mantenerse actualizados para un correcto funcionamiento del servicio. Por esta razón, si cualquiera de los datos correspondientes a su punto de suministro es incorrecto, debe contactar con nosotros para que podamos proceder a su corrección.  </SMALL></p>
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+{# Explicacion datos kw #}
+<div id="info_kw" style="display:none;">
+  <div class="row" style="margin-top: 5%">
+    <div class="col-sm-12 " >
+      <div class="panel panel-primary" style="background: #f6f6ee">
+        <div class="panel-heading" style=" background-color: black !important;">
+          <div class="text-center"> <i class="fa fa-arrow-circle-right fa-1x"></i> CUERPO DE LA FACTURA
+          </div>
+        </div>
+        <div   style="background: #f6f6ee">
+          <p class="text-justify"  style="margin-top: 5%;margin-left: 5%;margin-right: 5%;"><small> En esta sección aparece desglosado el cálculo del total de su factura. Este total se divide en el Término de Potencia (parte fija que depende de la potencia contratada), Término de Energía (parte que varía cada mes según su consumo y el precio de la energía), y los diferentes impuestos a aplicar.
+          </small><br />
+
+
+            <ul>
+              <li><p><small><strong>Término de Potencia:</strong>
+          se obtiene multiplicando los kW de potencia contratada, por los días que incluye el periodo de facturación, por el precio de los kW de potencia en cada periodo tarifario.</small></p></li>
+          <li><p><small><strong>Término de Energía:</strong>
+            el cálculo se realiza multiplicando los kWh de consumo por el precio de la energía en cada periodo tarifario.</small></p></li>
+          <li><p><small><strong>Impuesto de Electricidad:</strong> 5,113% del total del Término de Potencia y Término de Energía.</small>
+          </p></li>
+          <li><p><small><strong>Impuesto de alquiler:</strong> Valor que corresponde al alquiler del equipo de medida. No aparece cuando el equipo es propiedad del titular del contrato.</small>
+          </p></li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+{# Explicacion datos kw #}
+<div id="info_observaciones" style="display:none;">
+  <div class="row" style="margin-top: 5%">
+    <div class="col-sm-12 " >
+      <div class="panel panel-primary" style="background: #f6f6ee">
+        <div class="panel-heading" style=" background-color: black !important;">
+          <div class="text-center"> <i class="fa fa-arrow-circle-right fa-1x"></i>OBSERVACIONES</div>
+        </div>
+        <div   style="background: #f6f6ee">
+
+
+
+
+
+          <p class="text-justify"  style="margin-top: 5%;margin-left: 5%;margin-right: 5%;"><small> A través de este globo informaremos de todas aquellas modificaciones o noticias referentes a la factura, que puedan serle de interés:
+          </small><br />
+            <ul>
+              <li><p><small><strong>Descuentos</strong>
+        </small></p></li>
+          <li><p><small><strong>Nuevas Tarifas</strong>
+          </small></p></li>
+          <li><p><small><strong>Campañas de actualización de datos</strong> </small>
+          </p></li>
+
+
+          </ul>
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+{# Explicacion datos kw #}
+<div id="info_total" style="display:none;">
+  <div class="row" style="margin-top: 5%">
+    <div class="col-sm-12 " >
+      <div class="panel panel-primary" style="background: #f6f6ee">
+        <div class="panel-heading" style=" background-color: black !important;">
+
+
+          <div class="text-center"> <i class="fa fa-arrow-circle-right fa-1x"></i> TOTAL FACTURA
+          </div>
+        </div>
+        <div   style="background: #f6f6ee">
+          <p class="text-justify"  style="margin-top: 5%;margin-left: 5%;margin-right: 5%;"><small>
+            En esta parte puede encontrar el valor total al que asciende su factura una vez aplicado también el IVA.
+          </small><br />
+
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div id="info_lectura" style="display:none;">
+  <div class="row" style="margin-top: 5%">
+    <div class="col-sm-12 " >
+      <div class="panel panel-primary" style="background: #f6f6ee">
+        <div class="panel-heading" style=" background-color: black !important;">
+          <div class="text-center"> <i class="fa fa-arrow-circle-right fa-1x"></i> INFORMACION </div>
+        </div>
+        <div   style="background: #f6f6ee">
+
+          <address style="margin-top: 10%;margin-left: 5%;margin-right: 5%;">
+
+            <p class="text-center">
+              {{'factura.introduccion.comercial'|trans | raw }}
+              <a href="mailto:{{'factura.introduccion.correo.comercial'|trans | raw }}"> <small> {{'factura.introduccion.correo.comercial'|trans | raw }}</small></a> </br>
+            </p>
+          </address>
+          <address style="margin-top: 10%;margin-left: 5%;margin-right: 5%;">
+            {{'factura.introduccion.oficinacentral'|trans | raw }}
+            <a href="mailto:{{'factura.introduccion.correo.tecnico'|trans | raw }}"> <small> {{'factura.introduccion.correo.tecnico'|trans | raw }}</small></a> </br>
+            </p>
+          </address>
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+-->

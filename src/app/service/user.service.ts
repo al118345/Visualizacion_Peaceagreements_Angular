@@ -64,12 +64,13 @@ export class UserService {
       return true;
     }
   }
-
+  get_user(email) {
+    return this.db.collection('users', ref => ref.where('email', '==', email))
+  }
 
   logout(): void {
     localStorage.removeItem('currentUser');
   }
-
   getCurrentUser() {
     return new Promise<any>((resolve, reject) => {
       const user = firebase.auth().onAuthStateChanged(function(user) {
@@ -92,4 +93,6 @@ export class UserService {
       }, err => reject(err))
     })
   }
+
+
 }
