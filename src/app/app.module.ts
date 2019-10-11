@@ -16,8 +16,6 @@ import {ContratoItemComponent} from './component/listado-contratos/contrato-item
 import {ListarContratoComponent} from './component/listado-contratos/listar-contrato/listar-contrato.component';
 import { RegistroComponent } from './component/registro/registro.component';
 import { EjemploFacturaComponent } from './component/ejemplo-factura/ejemplo-factura.component';
-import { RegisterService } from './service/register.service';
-
 import { DetalleContratoComponent } from './component/detalle-contrato/detalle-contrato.component';
 import { DataService } from './service/dataservice';
 import { AceptarContratoComponent } from './component/aceptar-contrato/aceptar-contrato.component';
@@ -43,6 +41,7 @@ import { AdminComponent } from './component/admin/admin.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatButtonModule, MatInputModule, MatSliderModule, MatDialogModule } from '@angular/material';
 import {  CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import {CompletarDatosComponent} from './component/registro/completar-datos/completar-datos.component';
 
 @NgModule({
   declarations: [
@@ -66,7 +65,8 @@ import {  CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
     CambioCuentaItemComponent,
     GraphComponent,
     CrearIbanComponent,
-    AdminComponent
+    AdminComponent,
+    CompletarDatosComponent
   ],
   imports: [
     MatButtonModule,
@@ -86,7 +86,6 @@ import {  CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
   providers: [UsersGuard,
     UserService,
     ContratoService,
-    RegisterService,
     DataService,
     FacturasService,
     DatePipe ],

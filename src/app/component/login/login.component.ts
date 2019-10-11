@@ -14,6 +14,7 @@ export class LoginComponent implements OnInit {
   loading = false;
   error = '';
   errorMessage = '';
+  resultado: Array<any>;
 
   constructor(
     public authService: AuthService,
@@ -30,9 +31,7 @@ export class LoginComponent implements OnInit {
     this.loading = true;
     this.authService.doLogin(this.model.username, this.model.password)
       .then(res => {
-        // alert( JSON.stringify( res))
-        // console.log(JSON.stringify( res));
-        alert(res.user.emailVerified === true)
+        localStorage.setItem('currentUser', res.user.email );
         }, err => {
         console.log(err);
         this.errorMessage = err.message;
@@ -40,12 +39,23 @@ export class LoginComponent implements OnInit {
         this.loading = false;
       })
   }
-  tryGoogleLogin(){
+  tryGoogleLogin() {
     this.authService.doGoogleLogin()
       .then(res => {
-        alert('Correcto');
+        this.authService.get_user(res.user.email).subscribe(result => {
+          this.resultado = result;
+          localStorage.setItem('currentUser', res.user.email );
+          alert(result.length );
+          if (result.length === 1) {
+            this.router.navigate(['/app-login']);
+          } else {
+            this.router.navigate(['/app-completar-datos']);
+
+          }
+        });
       })
   }
+
   // en caso de no tener cuenta, activamos el registro
   registro() {
     this.router.navigate(['/app-registro']);

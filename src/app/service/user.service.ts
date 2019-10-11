@@ -15,7 +15,7 @@ export class UserService {
   public user: User;
 
   constructor( public db: AngularFirestore, public afAuth: AngularFireAuth) {
-    const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    const currentUser = localStorage.getItem('currentUser');
   }
 
   cambiocontraseña(contraseñavieja: string, contraseñanueva: string): boolean {
@@ -64,10 +64,12 @@ export class UserService {
       return true;
     }
   }
-
+  get_user(email) {
+    return this.db.collection('users', ref => ref.where('email', '==', email))
+  }
 
   logout(): void {
-    localStorage.removeItem('currentUser');
+      localStorage.removeItem('currentUser');
   }
 
   getCurrentUser() {
@@ -92,4 +94,6 @@ export class UserService {
       }, err => reject(err))
     })
   }
+
+
 }
