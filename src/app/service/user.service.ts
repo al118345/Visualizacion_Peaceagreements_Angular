@@ -71,7 +71,6 @@ export class UserService {
   logout(): void {
       localStorage.removeItem('currentUser');
   }
-
   getCurrentUser() {
     return new Promise<any>((resolve, reject) => {
       const user = firebase.auth().onAuthStateChanged(function(user) {
