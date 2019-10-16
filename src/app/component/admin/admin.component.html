@@ -1,49 +1,69 @@
-<div class="row">
-  <div class="col-md-4 offset-md-1">
-    <div class="input-group">
-      <input type="text" class="form-control" [(ngModel)]="searchValue" [ngModelOptions]="{standalone: true}" placeholder="Search by name..." (keyup)="searchByName()">
-      <div class="input-group-append">
-        <span class="input-group-text"><ion-icon class="icon" name="search"></ion-icon></span>
-      </div>
-    </div>
-  </div>
-  <div class="col-md-6 filter-by-age">
-    <div class="row">
-      <div class="col-md-auto title">
-        <span>Filter by age (older than):</span>
-      </div>
-      <div class="col">
-        <span>0 </span>
-        <mat-slider
-          class="age-slider"
-          max="100"
-          min="0"
-          step="1"
-          thumbLabel="true"
-          (ngModel)="ageValue"
-          (change)="rangeChange($event)">
-        </mat-slider>
-        <span> 100</span>
-      </div>
-    </div>
-  </div>
-</div>
 
-<div class="list-group users-list">
-  <div *ngFor="let item of items" class="list-group-item list-group-item-action flex-column align-items-start">
-    <div class="row">
-      <div class="col col-md-2 image-col">
-        <img class="image" [src]="">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <div class="row" >
+      <div class="col-md-3 offset-md-1" style="margin-top: 5px">
+        <div class="input-group" >
+          <input type="text" class="form-control" [(ngModel)]="searchValue" [ngModelOptions]="{standalone: true}" placeholder="Search by name..." (keyup)="searchByName()">
+          <div class="input-group-append">
+            <span  class="input-group-text"><ion-icon class="icon" name="search"></ion-icon></span>
+          </div>
+        </div>
       </div>
-      <div class="col col-md-8 text-col">
-        <h5 class="mb-1">{{item.payload.doc.data().correo}}</h5>
-        <small>Age: {{item.payload.doc.data().role}}</small>
+      <div class="col-md-3 offset-md-1" style="margin-top: 5px">
+        <div class="input-group">
+          <input type="text" class="form-control" [(ngModel)]="searchNif" [ngModelOptions]="{standalone: true}" placeholder="Search by nif..." (keyup)="searchbyNif()">
+          <div class="input-group-append">
+            <span class="input-group-text"><ion-icon class="icon" name="search"></ion-icon></span>
+          </div>
+        </div>
       </div>
-      <div class="col col-md-2 actions-col">
-        <button class="btn btn-outline-primary action" (click)="viewDetails(item)" type="button">
-          <ion-icon class="icon" name="arrow-round-forward"></ion-icon>
-        </button>
+
+
+      <div class="col-md-3 offset-md-1" style="margin-top: 5px">
+        <div class="input-group">
+          <input type="text" class="form-control" [(ngModel)]="searchRol" [ngModelOptions]="{standalone: true}" placeholder="Search by rol..." (keyup)="searchbyRol()">
+          <div class="input-group-append">
+            <span class="input-group-text"><ion-icon class="icon" name="search"></ion-icon></span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="list-group users-list">
+      <div *ngFor="let item of items" class="list-group-item list-group-item-action flex-column align-items-start">
+        <div class="row">
+          <div class="col col-md-2">
+            <div class="image-col"  *ngIf="item.payload.doc.data().rol == 'Administrador' ">
+              <i  class="fa fa-user-md" style="font-size: 48px;"></i>
+            </div>
+            <div class="image-col"  *ngIf="item.payload.doc.data().rol == 'User' ">
+              <i  class="fa fa-user-md" style="font-size: 48px;"></i>
+            </div>
+            <div class="image-col"  *ngIf="item.payload.doc.data().rol == 'Comercial' ">
+              <i  class="fa fa-user-md" style="font-size: 48px;"></i>
+            </div>
+            <div class="image-col centerWrapper"  *ngIf="item.payload.doc.data().rol == 'inicial' ">
+
+              <i  class="fa fa-user-o center" style="font-size: 48px;"></i>
+            </div>
+          </div>
+          <div class="col col-md-8 text-col">
+            <h5 class="mb-1">Nombre: {{item.payload.doc.data().razonsocial}}</h5>
+
+            <small>Rol: {{item.payload.doc.data().rol}}</small>
+          </div>
+          <div class="col col-md-2 actions-col">
+            <button class="btn btn-outline-primary action" (click)="viewDetails(item)" type="button">
+              <ion-icon class="icon" name="arrow-round-forward"></ion-icon>
+            </button>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-</div>
+
+
+
+
+

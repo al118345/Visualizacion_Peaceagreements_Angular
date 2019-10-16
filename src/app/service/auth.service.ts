@@ -92,7 +92,7 @@ export class AuthService {
       telefono: telefono,
       email: localStorage.getItem('currentUser'),
       informacion_recopilada: true,
-      rol: ''
+      rol: 'inicial'
     });
   }
 }

@@ -24,7 +24,6 @@ import { FacturasContratoComponent } from './component/listado-facturas/facturas
 import { FacturaItemComponent } from './component/listado-facturas/factura-item/factura-item.component';
 import { ListarFacturaComponent } from './component/listado-facturas/listar-factura/listar-factura.component';
 import { MenuComponent } from './component/menu/menu.component';
-import { UsuarioComponent } from './component/usuario/usuario.component';
 import { GraphComponent } from './component/various/graph/graph.component';
 
 import {ChartsModule} from 'ng2-charts';
@@ -42,6 +41,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatButtonModule, MatInputModule, MatSliderModule, MatDialogModule } from '@angular/material';
 import {  CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import {CompletarDatosComponent} from './component/registro/completar-datos/completar-datos.component';
+import { MenuVerticalComponent } from './component/visual/menu-vertical/menu-vertical.component';
+import {DeviceDetectorModule, DeviceDetectorService} from 'ngx-device-detector';
+import {UsuarioComponent} from './component/admin/usuario/usuario.component';
+import { FootComponent } from './component/foot/foot.component';
+import { ListadoSubastaComponent } from './component/listado-subasta/listado-subasta.component';
+import { ListarSubastaComponent } from './component/listado-subasta/listar-subasta/listar-subasta.component';
+import { SubastaItemComponent } from './component/listado-subasta/subasta-item/subasta-item.component';
 
 @NgModule({
   declarations: [
@@ -66,7 +72,12 @@ import {CompletarDatosComponent} from './component/registro/completar-datos/comp
     GraphComponent,
     CrearIbanComponent,
     AdminComponent,
-    CompletarDatosComponent
+    CompletarDatosComponent,
+    MenuVerticalComponent,
+    FootComponent,
+    ListadoSubastaComponent,
+    ListarSubastaComponent,
+    SubastaItemComponent
   ],
   imports: [
     MatButtonModule,
@@ -79,6 +90,7 @@ import {CompletarDatosComponent} from './component/registro/completar-datos/comp
     ChartsModule,
     routing,
     NgxPaginationModule,
+    DeviceDetectorModule.forRoot(),
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule, // imports firebase/firestore, only needed for database features
     AngularFireAuthModule, BrowserAnimationsModule // imports firebase/auth, only needed for auth features

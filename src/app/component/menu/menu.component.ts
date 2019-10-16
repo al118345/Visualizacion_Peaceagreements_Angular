@@ -16,10 +16,10 @@ export class MenuComponent implements OnInit {
 
   }
   contratos() {
-    this.router.navigate(['/app-listado-contratos']);
+    this.router.navigate(['/app-subastas']);
   }
   usuario() {
-    this.router.navigate(['/app-usuario']);
+    this.router.navigate(['/app-admin']);
   }
   login() {
     this.router.navigate(['/app-login']);

@@ -10,16 +10,28 @@ export class FirebaseService {
   getUsers() {
     return this.db.collection('users').snapshotChanges();
   }
+  searchRoles() {
+    return this.db.collection('roles').snapshotChanges();
+  }
+
 
   searchUsers(searchValue) {
-    return this.db.collection('users', ref => ref.where('nameToSearch', '>=', searchValue)
-      .where('nameToSearch', '<=', searchValue + '\uf8ff'))
+      return this.db.collection('users', ref => ref.where('razonsocial', '>=', searchValue)
+        .where('razonsocial', '<=', searchValue + '\uf8ff'))
+        .snapshotChanges()
+  }
+
+  searchNif(searchValue) {
+    return this.db.collection('users', ref => ref.where('nif', '>=', searchValue)
+      .where('nif', '<=', searchValue + '\uf8ff'))
       .snapshotChanges()
   }
-
-  searchUsersByAge(value) {
-    return this.db.collection('users', ref => ref.orderBy('age').startAt(value)).snapshotChanges();
+  searchRol(searchValue) {
+    return this.db.collection('users', ref => ref.where('rol', '>=', searchValue)
+      .where('rol', '<=', searchValue + '\uf8ff'))
+      .snapshotChanges()
   }
-
-
+  almacenarrol(userKey, value) {
+    return this.db.collection('users').doc(userKey).update(value);
+  }
 }
