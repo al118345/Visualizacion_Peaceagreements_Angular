@@ -1,7 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {DataService} from '../../../service/dataservice';
-import {Contrato} from '../../../model/Contrato';
 import {Subasta} from '../../../model/Subasta';
 
 @Component({
@@ -15,7 +14,10 @@ export class SubastaItemComponent implements OnInit {
   constructor(
     private router: Router,
     public dataservice: DataService
-  ) { }
+  ) {
+    alert('aa');
+
+  }
 
   ngOnInit() {
 

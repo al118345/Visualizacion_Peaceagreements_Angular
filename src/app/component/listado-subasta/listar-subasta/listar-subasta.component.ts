@@ -16,11 +16,10 @@ export class ListarSubastaComponent implements OnInit {
   p = 1;
   constructor( private subastaListData: SubastaService
   ) {
-    alert("asasda");
     this.subastaListData.getSubastas().subscribe(result => {
-      this.subastaList = result
+      this.subastaList = result;
+      this.numberofobject = this.subastaList.length;
     })
-    this.numberofobject = this.subastaList.length;
   }
   ngOnInit() {
   }

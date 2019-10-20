@@ -16,6 +16,7 @@ export class ListarContratoComponent implements OnInit {
   ) {
     this.contratoList = this.contratoListData.getContrato().items;
     this.numberofobject = this.contratoList.length;
+
   }
   ngOnInit() {
   }
