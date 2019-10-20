@@ -1,0 +1,41 @@
+<!--Si la lista esta vacia, mostramos un texto como confirmación-->
+<div *ngIf="numberofobject ===0; then mostrarvacio "> </div>
+<ng-template #mostrarvacio>
+  <h1>En este momento, no posee ninguna subasta para mostrar.</h1>
+</ng-template>
+
+<div class="list-group users-list">
+  <div *ngFor="let item of items" class="list-group-item list-group-item-action flex-column align-items-start">
+    <div class="row">
+      <div class="col col-md-2 image-col">
+        <img class="image" [src]="item.payload.doc.data().avatar">
+      </div>
+      <div class="col col-md-8 text-col">
+        <h5 class="mb-1">{{item.payload.doc.data().name}} {{item.payload.doc.data().surname}}</h5>
+        <small>Age: {{item.payload.doc.data().age}}</small>
+      </div>
+      <div class="col col-md-2 actions-col">
+        <button class="btn btn-outline-primary action" (click)="viewDetails(item)" type="button">
+          <ion-icon class="icon" name="arrow-round-forward"></ion-icon>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--Listado de pedidos con un controlador de paginas-->
+
+
+
+
+<div class="list-group users-list">
+  <div  class="list-group-item list-group-item-action flex-column align-items-start">
+    <ul class="list-group ">
+      <!--<div class="list-group-notice"> Tiene {{numberofobject}} contrato</div>-->
+      <li class="list-group-item transparent" *ngFor="let contrato of contratoList | paginate: { itemsPerPage: 7, currentPage: p }">
+        <app-contrato-item [contrato]="contrato"></app-contrato-item >
+      </li>
+      <pagination-controls (pageChange)="p = $event"></pagination-controls>
+    </ul>
+  </div>
+</div>

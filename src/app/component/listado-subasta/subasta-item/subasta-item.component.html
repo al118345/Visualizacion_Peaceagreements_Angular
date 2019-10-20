@@ -1,0 +1,17 @@
+<div *ngIf="contrato != null; then mostrarcontrato "> </div>
+<ng-template #mostrarcontrato>
+  <div class="row">
+    <div class="col col-md-2 image-col">
+      <img class="image" [src]="subasta.documento">
+    </div>
+    <div class="col col-md-8 text-col">
+      <h5 class="mb-1">{{subasta.activo}} {{subasta.nombre}}</h5>
+      <small>Age: {{subasta.introduccion}}</small>
+    </div>
+    <div class="col col-md-2 actions-col">
+      <button class="btn btn-outline-primary action" (click)="viewDetails(item)" type="button">
+        <ion-icon class="icon" name="arrow-round-forward"></ion-icon>
+      </button>
+    </div>
+  </div>
+</ng-template>

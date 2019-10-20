@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import {LOCALE_ID, NgModule} from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { routing } from './app.routing';
 
@@ -48,6 +48,10 @@ import { FootComponent } from './component/foot/foot.component';
 import { ListadoSubastaComponent } from './component/listado-subasta/listado-subasta.component';
 import { ListarSubastaComponent } from './component/listado-subasta/listar-subasta/listar-subasta.component';
 import { SubastaItemComponent } from './component/listado-subasta/subasta-item/subasta-item.component';
+import { FormularioComponent } from './component/subasta/formulario/formulario.component';
+import {  MatDatepickerModule, MatNativeDateModule } from '@angular/material';
+import {AngularFireStorageModule} from '@angular/fire/storage';
+
 
 @NgModule({
   declarations: [
@@ -77,16 +81,21 @@ import { SubastaItemComponent } from './component/listado-subasta/subasta-item/s
     FootComponent,
     ListadoSubastaComponent,
     ListarSubastaComponent,
-    SubastaItemComponent
+    SubastaItemComponent,
+    FormularioComponent
   ],
   imports: [
     MatButtonModule,
     MatInputModule,
     MatSliderModule,
     MatDialogModule,
+    MatDatepickerModule,        // <----- import(must)
+    MatNativeDateModule,        // <----- import for date formating(optional)
     BrowserModule,
     FormsModule,
     HttpClientModule,
+    AngularFireStorageModule,
+    ReactiveFormsModule,
     ChartsModule,
     routing,
     NgxPaginationModule,

@@ -13,11 +13,15 @@ import {AdminComponent} from './component/admin/admin.component';
 import {CompletarDatosComponent} from './component/registro/completar-datos/completar-datos.component';
 import {MenuVerticalComponent} from './component/visual/menu-vertical/menu-vertical.component';
 import {UsuarioComponent} from './component/admin/usuario/usuario.component';
+import {FormularioComponent} from './component/subasta/formulario/formulario.component';
+import {ListadoSubastaComponent} from './component/listado-subasta/listado-subasta.component';
 
 
 
 const appRoutes: Routes = [
   { path: 'app-login', component: LoginComponent },
+  { path: 'app-listado-subasta', component: ListadoSubastaComponent },
+  { path: 'app-formulario', component: FormularioComponent },
   { path: 'app-admin', component: MenuVerticalComponent },
   { path: 'app-usuario', component: UsuarioComponent },
   { path: 'app-registro', component: RegistroComponent },

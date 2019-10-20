@@ -31,6 +31,7 @@ export class FirebaseService {
       .where('rol', '<=', searchValue + '\uf8ff'))
       .snapshotChanges()
   }
+
   almacenarrol(userKey, value) {
     return this.db.collection('users').doc(userKey).update(value);
   }
