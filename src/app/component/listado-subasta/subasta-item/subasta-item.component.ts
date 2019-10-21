@@ -15,11 +15,11 @@ export class SubastaItemComponent implements OnInit {
     private router: Router,
     public dataservice: DataService
   ) {
-    alert('aa');
 
   }
 
   ngOnInit() {
+    alert(this.subasta.nombre)
 
 
   }

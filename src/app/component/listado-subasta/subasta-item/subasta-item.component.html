@@ -1,12 +1,12 @@
-<div *ngIf="contrato != null; then mostrarcontrato "> </div>
+<div *ngIf="subasta != null; then mostrarcontrato "> </div>
 <ng-template #mostrarcontrato>
   <div class="row">
     <div class="col col-md-2 image-col">
-      <img class="image" [src]="subasta.documento">
+      <img class="image" [src]="this.subasta.documento.url">
     </div>
     <div class="col col-md-8 text-col">
-      <h5 class="mb-1">{{subasta.activo}} {{subasta.nombre}}</h5>
-      <small>Age: {{subasta.introduccion}}</small>
+      <h5 class="mb-1">{{this.subasta.activo}} {{this.subasta.nombre}}</h5>
+      <small>Age: {{this.subasta.introduccion}}</small>
     </div>
     <div class="col col-md-2 actions-col">
       <button class="btn btn-outline-primary action" (click)="viewDetails(item)" type="button">
