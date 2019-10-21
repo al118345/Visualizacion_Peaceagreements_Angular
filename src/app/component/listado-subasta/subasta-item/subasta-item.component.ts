@@ -24,6 +24,7 @@ export class SubastaItemComponent implements OnInit {
 
   }
   viewDetails(item) {
+    //      <img class="image" [src]="this.subasta.documento.url">
     this.dataservice.subasta = this.subasta;
     this.router.navigate(['app-mostrar-subasta']);
   }
