@@ -25,4 +25,5 @@ export class ListarSubastaComponent implements OnInit {
   }
 
 
+
 }

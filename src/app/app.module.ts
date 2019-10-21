@@ -51,6 +51,7 @@ import { SubastaItemComponent } from './component/listado-subasta/subasta-item/s
 import { FormularioComponent } from './component/subasta/formulario/formulario.component';
 import {  MatDatepickerModule, MatNativeDateModule } from '@angular/material';
 import {AngularFireStorageModule} from '@angular/fire/storage';
+import { MostrarSubastaComponent } from './component/subasta/mostrar-subasta/mostrar-subasta.component';
 
 
 @NgModule({
@@ -82,7 +83,8 @@ import {AngularFireStorageModule} from '@angular/fire/storage';
     ListadoSubastaComponent,
     ListarSubastaComponent,
     SubastaItemComponent,
-    FormularioComponent
+    FormularioComponent,
+    MostrarSubastaComponent
   ],
   imports: [
     MatButtonModule,

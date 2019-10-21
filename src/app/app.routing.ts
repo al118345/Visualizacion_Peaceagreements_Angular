@@ -15,11 +15,13 @@ import {MenuVerticalComponent} from './component/visual/menu-vertical/menu-verti
 import {UsuarioComponent} from './component/admin/usuario/usuario.component';
 import {FormularioComponent} from './component/subasta/formulario/formulario.component';
 import {ListadoSubastaComponent} from './component/listado-subasta/listado-subasta.component';
+import {MostrarSubastaComponent} from './component/subasta/mostrar-subasta/mostrar-subasta.component';
 
 
 
 const appRoutes: Routes = [
   { path: 'app-login', component: LoginComponent },
+  { path: 'app-mostrar-subasta', component: MostrarSubastaComponent },
   { path: 'app-listado-subasta', component: ListadoSubastaComponent },
   { path: 'app-formulario', component: FormularioComponent },
   { path: 'app-admin', component: MenuVerticalComponent },

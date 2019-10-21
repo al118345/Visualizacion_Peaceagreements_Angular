@@ -23,5 +23,9 @@ export class SubastaItemComponent implements OnInit {
 
 
   }
+  viewDetails(item) {
+    this.dataservice.subasta = this.subasta;
+    this.router.navigate(['app-mostrar-subasta']);
+  }
 
 }
