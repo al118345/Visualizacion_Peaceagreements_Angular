@@ -17,4 +17,7 @@ export class SubastaService {
 
     return this.db.collection('subastas').add(param);
   }
+  modificarpuja(userKey, value) {
+    return this.db.collection('subastas').doc(userKey).update(value);
+  }
 }

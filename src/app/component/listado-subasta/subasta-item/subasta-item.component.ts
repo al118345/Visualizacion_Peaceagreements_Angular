@@ -11,6 +11,7 @@ import {Subasta} from '../../../model/Subasta';
 export class SubastaItemComponent implements OnInit {
 
   @Input() subasta: Subasta;
+  @Input() id: string;
   constructor(
     private router: Router,
     public dataservice: DataService
@@ -25,6 +26,7 @@ export class SubastaItemComponent implements OnInit {
   }
   viewDetails(item) {
     //      <img class="image" [src]="this.subasta.documento.url">
+    this.subasta.id = this.id;
     this.dataservice.subasta = this.subasta;
     this.router.navigate(['app-mostrar-subasta']);
   }

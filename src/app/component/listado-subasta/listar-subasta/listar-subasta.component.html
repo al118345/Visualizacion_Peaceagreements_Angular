@@ -10,7 +10,7 @@
 
   <div class="list-group users-list">
     <div *ngFor="let contrato of subastaList" class="list-group-item list-group-item-action flex-column align-items-start">
-      <app-subasta-item [subasta]="contrato.payload.doc.data()"></app-subasta-item >
+      <app-subasta-item [subasta]="contrato.payload.doc.data()" [id]="contrato.payload.doc.id"></app-subasta-item >
     </div>
 
 </div>
