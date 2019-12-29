@@ -1,0 +1,52 @@
+
+<div class="registry_aux">
+  <div class="registry-form">
+    <div class="main-div panel_personalizado">
+      <div *ngIf="ok == true else registro">
+        <div class="panel">
+          <div class="row">
+            <div  class="col-md-6 col-md-offset-2"  >
+              <h5>Se ha dado de alta el nuevo Iban:
+                <b>{{this.model.iban}}</b></h5>
+            </div>
+            <div class="col-md-4" >
+              <button type="submit"  (click)="volverListadoContratos()" class="btn btn-primary">Atrás</button></div>
+          </div>
+        </div>
+
+
+      </div>
+
+
+
+
+
+
+      <ng-template #registro>
+        <form id="form" (ngSubmit)="f.form.valid && register()" #f="ngForm" novalidate>
+
+            <div class="row">
+
+
+              <div class=" col-md-6 col-md-offset-2" >
+                <div class="col-md-10">
+                <input type="text" class="form-control"    name="iban" placeholder="..." [(ngModel)]="model.iban" #nif="ngModel" required>
+                </div>
+              </div>
+              <div  class="col-md-4"   >
+                <button type="submit" class="btn btn-primary textomedio">Guardar IBAN</button>
+                <img *ngIf="loading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA=="
+                />
+              </div>
+            </div>
+
+          <div *ngIf="errorIBAN" class="alert alert-danger">{{errorIBAN}}</div>
+
+
+        </form>
+      </ng-template>
+
+
+    </div>
+  </div>
+</div>

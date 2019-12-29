@@ -1,0 +1,14 @@
+<!--Si la lista esta vacia, mostramos un texto como confirmación-->
+<div *ngIf="numberofobject ===0; then mostrarvacio "> </div>
+<ng-template #mostrarvacio>
+  <h1>En este momento, no posee ningún contrato.</h1>
+</ng-template>
+
+<!--Listado de pedidos con un controlador de paginas-->
+<ul class="list-group ">
+  <!--<div class="list-group-notice"> Tiene {{numberofobject}} contrato</div>-->
+  <li class="list-group-item transparent" *ngFor="let contrato of contratoList | paginate: { itemsPerPage: 7, currentPage: p }">
+    <app-contrato-item [contrato]="contrato"></app-contrato-item >
+  </li>
+  <pagination-controls (pageChange)="p = $event"></pagination-controls>
+</ul>
