@@ -1,7 +1,7 @@
 .image_sup
 {
   width: 15%;
-  min-width: 200px;
+  max-width: 100px;
   padding-right: 25px;
 }
 
@@ -18,9 +18,17 @@
   }
 }
 
+
+.texto{
+  font-family: Ubuntu !important;
+  color: rgb(46, 46, 56);
+
+
+}
+
 .btn.btn-primary{
   background-image: null;
-  background: transparent !important; 
+  background: transparent !important;
   border: 0px !important;
 }
 

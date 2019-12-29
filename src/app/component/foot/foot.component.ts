@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import * as moment from 'moment'
+
+
 
 @Component({
   selector: 'app-foot',
@@ -7,9 +10,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FootComponent implements OnInit {
 
+  anyo = '';
   constructor() { }
 
   ngOnInit() {
+    this.anyo = moment(new Date()).format('YYYY');
   }
 
 }
+
+
+

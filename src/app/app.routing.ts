@@ -16,10 +16,12 @@ import {UsuarioComponent} from './component/admin/usuario/usuario.component';
 import {FormularioComponent} from './component/subasta/formulario/formulario.component';
 import {ListadoSubastaComponent} from './component/listado-subasta/listado-subasta.component';
 import {MostrarSubastaComponent} from './component/subasta/mostrar-subasta/mostrar-subasta.component';
+import {VisualizacionPazComponent} from './component/visualizacion-paz/visualizacion-paz.component';
 
 
 
 const appRoutes: Routes = [
+  { path: 'app-visualizacion-paz', component: VisualizacionPazComponent },
   { path: 'app-login', component: LoginComponent },
   { path: 'app-mostrar-subasta', component: MostrarSubastaComponent },
   { path: 'app-listado-subasta', component: ListadoSubastaComponent },
@@ -35,7 +37,7 @@ const appRoutes: Routes = [
   { path: 'app-detalle-contrato', component: DetalleContratoComponent , canActivate: [UsersGuard]},
   { path: 'app-listado-cuenta', component: ListadoCambioCuentaComponent , canActivate: [UsersGuard]},
   { path: 'app-facturas-contrato', component: FacturasContratoComponent , canActivate: [UsersGuard]},
-  { path: '**',  component: LoginComponent }
+  { path: '**',  component: VisualizacionPazComponent }
 ];
 
 export const routing = RouterModule.forRoot(appRoutes);
