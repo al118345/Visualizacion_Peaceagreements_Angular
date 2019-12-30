@@ -1,12 +1,25 @@
 import { Injectable } from '@angular/core';
 import {AngularFirestore} from '@angular/fire/firestore';
+import {AngularFireDatabase, AngularFireDatabaseModule} from '@angular/fire/database';
+
+import {Observable} from 'rxjs/Observable';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class FirebaseService {
+  items: Observable<any[]>;
 
-  constructor(public db: AngularFirestore) {}
+
+  constructor(public db: AngularFirestore, private db2: AngularFireDatabase) {}
+
+  getEvolutionLife() {
+    alert(JSON.parse(this.db2.list('/esperanza_vida').valueChanges()));
+
+  }
+
+
   getUsers() {
     return this.db.collection('users').snapshotChanges();
   }

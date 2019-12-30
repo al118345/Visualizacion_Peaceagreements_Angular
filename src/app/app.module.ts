@@ -32,7 +32,6 @@ import {ListarCambioCuentaComponent} from './component/listado-cambio-cuenta/lis
 import {ListadoCambioCuentaComponent} from './component/listado-cambio-cuenta/listado-cambio-cuenta.component';
 import {CambioCuentaItemComponent} from './component/listado-cambio-cuenta/cambio-cuenta-item/cambio-cuenta-item.component';
 import { CrearIbanComponent } from './component/crear-iban/crear-iban.component';
-import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { environment } from '../environments/environment';
@@ -53,7 +52,9 @@ import {  MatDatepickerModule, MatNativeDateModule } from '@angular/material';
 import {AngularFireStorageModule} from '@angular/fire/storage';
 import { MostrarSubastaComponent } from './component/subasta/mostrar-subasta/mostrar-subasta.component';
 import { VisualizacionPazComponent } from './component/visualizacion-paz/visualizacion-paz.component';
-
+import { GraficaComponent } from './component/visualizacion-paz/grafica/grafica.component';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireDatabaseModule } from '@angular/fire/database';
 
 @NgModule({
   declarations: [
@@ -86,7 +87,8 @@ import { VisualizacionPazComponent } from './component/visualizacion-paz/visuali
     SubastaItemComponent,
     FormularioComponent,
     MostrarSubastaComponent,
-    VisualizacionPazComponent
+    VisualizacionPazComponent,
+    GraficaComponent
   ],
   imports: [
     MatButtonModule,
@@ -105,6 +107,8 @@ import { VisualizacionPazComponent } from './component/visualizacion-paz/visuali
     NgxPaginationModule,
     DeviceDetectorModule.forRoot(),
     AngularFireModule.initializeApp(environment.firebase),
+    AngularFireDatabaseModule,
+
     AngularFirestoreModule, // imports firebase/firestore, only needed for database features
     AngularFireAuthModule, BrowserAnimationsModule // imports firebase/auth, only needed for auth features
   ],
