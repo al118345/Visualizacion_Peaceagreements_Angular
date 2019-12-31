@@ -1,0 +1,15 @@
+<p> {{this.paises.length}}grafica works!</p>
+
+
+<div class="main-div panel_personalizado center">
+
+
+  <div *ngIf="this.paises.length>0; then mostrarvacio "> </div>
+  <ng-template #mostrarvacio>
+    hola
+    <app-dibujar [paises]="this.paises"></app-dibujar>
+  </ng-template>
+
+
+
+</div>

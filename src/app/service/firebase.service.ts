@@ -15,7 +15,7 @@ export class FirebaseService {
   constructor(public db: AngularFirestore, private db2: AngularFireDatabase) {}
 
   getEvolutionLife() {
-    alert(JSON.parse(this.db2.list('/esperanza_vida').valueChanges()));
+      return this.db2.list('/esperanza_vida').valueChanges()
 
   }
 

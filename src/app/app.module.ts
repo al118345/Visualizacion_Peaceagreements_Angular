@@ -55,6 +55,7 @@ import { VisualizacionPazComponent } from './component/visualizacion-paz/visuali
 import { GraficaComponent } from './component/visualizacion-paz/grafica/grafica.component';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
+import {DibujarComponent} from './component/visualizacion-paz/grafica/dibujar/dibujar.component';
 
 @NgModule({
   declarations: [
@@ -88,7 +89,9 @@ import { AngularFireDatabaseModule } from '@angular/fire/database';
     FormularioComponent,
     MostrarSubastaComponent,
     VisualizacionPazComponent,
-    GraficaComponent
+    GraficaComponent,
+    DibujarComponent,
+    DibujarComponent
   ],
   imports: [
     MatButtonModule,
