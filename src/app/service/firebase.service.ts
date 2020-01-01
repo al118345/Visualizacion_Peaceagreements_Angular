@@ -19,6 +19,10 @@ export class FirebaseService {
 
   }
 
+  getTratados() {
+    return this.db2.list('/tratados').valueChanges()
+  }
+
 
   getUsers() {
     return this.db.collection('users').snapshotChanges();

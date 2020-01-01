@@ -7,7 +7,7 @@
   <div *ngIf="this.paises.length>0; then mostrarvacio "> </div>
   <ng-template #mostrarvacio>
     hola
-    <app-dibujar [paises]="this.paises"></app-dibujar>
+    <app-dibujar [paises]="this.paises" [tratados]="this.tratados" ></app-dibujar>
   </ng-template>
 
 
