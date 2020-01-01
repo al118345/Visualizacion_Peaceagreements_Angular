@@ -10,48 +10,49 @@ import {Pais} from '../../../../model/Pais';
 })
 export class DibujarComponent implements OnInit {
   @Input() paises: Array<Pais>;
+  pais: Pais;
   // lineChart
-  public factura: Pais;
-  public lineChartData: Array<any> = [
-    {data: [], label: 'Pais'},
-    {data: [], label: 'Esperanza Vida'}
-  ];
+  public lineChartData: Array<any>;
   public lineChartLabels: Array<String> = [];
   public lineChartOptions: any = {
     responsive: true
   };
   public lineChartLegend = true;
-  public lineChartType:string = 'bar';
+  public lineChartType:string = 'line';
   public TipoGrafica: string = 'Ver lineas';
 
-  public randomizeType():void {
+  public randomizeType(): void {
     this.lineChartType = this.lineChartType === 'line' ? 'bar' : 'line';
-    this.TipoGrafica = this.lineChartType === 'line' ? 'Ver barras' :'Ver lineas'  ;
-  }
-
-  public compare(a: Pais, b: Pais) {
-
-    if (a.supp ===  b.supp) {
-      return -1;
-    } else {
-      return 1;
-    }
+    this.TipoGrafica = this.lineChartType === 'line' ? 'Ver barras' : 'Ver lineas'  ;
   }
 
 
-
-  constructor(private datePipe: DatePipe) { }
 
   ngOnInit() {
 
-    let lenght = this.paises_local.length;
+    const lenght = this.paises.length;
+    alert(lenght);
     let iterator = 0;
+    let lista_colores = [];
 
-    while (iterator < lenght){
-      this.factura = this.paises_local[iterator];
-      this.lineChartData[0].data.push(this.factura.esperanza_vida);
-      this.lineChartLabels.push(this.factura.nombres);
+    this.lineChartData = [
+    ];
+
+    let contador_array = -1;
+    while (iterator < lenght) {
+      if ( lista_colores.indexOf(this.paises[iterator].supp) === -1) {
+        contador_array = contador_array + 1;
+        lista_colores.push(this.paises[iterator].supp);
+        this.lineChartData.push( {data: [],  fill: false, label: this.paises[iterator].supp })
+      }
+      this.pais = this.paises[iterator];
+      this.lineChartData[contador_array].data.push(this.pais.esperanza_vida);
+      if ( contador_array === 0 ) {
+       this.lineChartLabels.push(this.pais.nombres);
+      }
       iterator++;
     }
+
+
   }
 }
