@@ -56,6 +56,7 @@ import { GraficaComponent } from './component/visualizacion-paz/grafica/grafica.
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
 import {DibujarComponent} from './component/visualizacion-paz/grafica/dibujar/dibujar.component';
+import {TratadosInformacionComponent} from './component/visualizacion-paz/grafica/dibujar/tratados-informacion/tratados-informacion.component';
 
 @NgModule({
   declarations: [
@@ -91,7 +92,8 @@ import {DibujarComponent} from './component/visualizacion-paz/grafica/dibujar/di
     VisualizacionPazComponent,
     GraficaComponent,
     DibujarComponent,
-    DibujarComponent
+    DibujarComponent,
+    TratadosInformacionComponent
   ],
   imports: [
     MatButtonModule,

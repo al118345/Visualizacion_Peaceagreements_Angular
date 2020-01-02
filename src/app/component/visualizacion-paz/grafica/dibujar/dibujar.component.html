@@ -8,14 +8,14 @@
             [options]="lineChartOptions"
             [legend]="lineChartLegend"
             [chartType]="lineChartType"
-
-    ></canvas>
+            (chartClick)="chartClicked($event)">
+      ></canvas>
   </div>
   <div class="col-md-1"></div>
 </div>
-<div class="row">
-  <div class="col-md-12">
 
-    <button class="btn btn-primary" (click)="randomizeType()">{{TipoGrafica}}</button>
-  </div>
-</div>
+
+<div *ngIf="this.mostrarinformacion>0; then mostrar "> </div>
+<ng-template #mostrar>
+  <app-tratados-informacion   [texto_tratado]="this.texto_tratado" ></app-tratados-informacion>
+</ng-template>
