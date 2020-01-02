@@ -57,6 +57,7 @@ import { AngularFireModule } from '@angular/fire';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
 import {DibujarComponent} from './component/visualizacion-paz/grafica/dibujar/dibujar.component';
 import {TratadosInformacionComponent} from './component/visualizacion-paz/grafica/dibujar/tratados-informacion/tratados-informacion.component';
+import { MundoWebComponent } from './component/visualizacion-paz/mundo-web/mundo-web.component';
 
 @NgModule({
   declarations: [
@@ -93,7 +94,8 @@ import {TratadosInformacionComponent} from './component/visualizacion-paz/grafic
     GraficaComponent,
     DibujarComponent,
     DibujarComponent,
-    TratadosInformacionComponent
+    TratadosInformacionComponent,
+    MundoWebComponent
 
   ],
   imports: [

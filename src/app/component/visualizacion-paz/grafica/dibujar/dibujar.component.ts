@@ -3,7 +3,6 @@ import {Item} from '../../../../model/Factura';
 import {DatePipe} from '@angular/common';
 import {Pais} from '../../../../model/Pais';
 import {Tratados} from '../../../../model/Tratados';
-import {ChartDirectivesDirective} from '../../../../directives/chart-directives.directive';
 import { BaseChartDirective } from 'ng2-charts';
 
 
