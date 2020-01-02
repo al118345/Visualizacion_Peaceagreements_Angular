@@ -27,7 +27,25 @@
 
   <div *ngIf="this.paises.length>0; then mostrarvacio "> </div>
   <ng-template #mostrarvacio>
-    <app-dibujar [paises]="this.paises" [tratados]="this.tratados" ></app-dibujar>
+
+    <form>
+      <div class="row main-div" >
+        <div class="col-md-1"></div>
+        <div class="col-md-4">
+          <button type="submit"   (click)="mostarTodo()"  class="form-control">No mostrar Ninguno</button>
+        </div>
+        <div class="col-md-1"></div>
+        <div class="col-md-4">
+          <button type="submit"   (click)="noMostrarNada()"   class="form-control">Mostrar_Todos</button>
+        </div>
+      </div>
+    </form>
+
+
+    <app-dibujar [paises]="this.paises" [tratados]="this.tratados" [todo]="this.mostrartodo"  [nada]="this.cambio"></app-dibujar>
+
+
+
   </ng-template>
 
 

@@ -15,11 +15,14 @@ export class GraficaComponent implements OnInit {
   errorMessage = ''
   paises: Array<Pais>;
   tratados: Array<Tratados>;
+  model: any = {};
+  loading = false;
+  mostrartodo = true;
+  cambio = false;
 
   constructor( private graficaListData: FirebaseService) {
-    this.paises = []
-    this.tratados = []
-
+    this.paises = [];
+    this.tratados = [];
     this.graficaListData.getTratados().subscribe(
       tratados => {
         for (let i = 0; i < tratados.length; i++) {
@@ -38,8 +41,25 @@ export class GraficaComponent implements OnInit {
 
   }
 
-  ngOnInit() {
 
+  ngOnInit() {
   }
 
+  mostarTodo() {
+    this.mostrartodo = true;
+    if (this.cambio === true) {
+      this.cambio = false;
+    } else {
+      this.cambio = true;
+    }
+  }
+
+  noMostrarNada() {
+    this.mostrartodo = false;
+    if (this.cambio === true) {
+      this.cambio = false;
+    } else {
+      this.cambio = true;
+    }
+  }
 }
