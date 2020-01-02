@@ -94,6 +94,7 @@ import {TratadosInformacionComponent} from './component/visualizacion-paz/grafic
     DibujarComponent,
     DibujarComponent,
     TratadosInformacionComponent
+
   ],
   imports: [
     MatButtonModule,
