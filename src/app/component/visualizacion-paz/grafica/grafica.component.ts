@@ -12,12 +12,14 @@ import {Tratados} from '../../../model/Tratados';
   styleUrls: ['./grafica.component.css']
 })
 export class GraficaComponent implements OnInit {
+
+
   errorMessage = ''
   paises: Array<Pais>;
   tratados: Array<Tratados>;
   model: any = {};
   loading = false;
-  mostrartodo = true;
+  mostrartodo = false;
   cambio = false;
 
   constructor( private graficaListData: FirebaseService) {
@@ -46,7 +48,7 @@ export class GraficaComponent implements OnInit {
   }
 
   mostarTodo() {
-    this.mostrartodo = true;
+    this.mostrartodo = false;
     if (this.cambio === true) {
       this.cambio = false;
     } else {
@@ -55,7 +57,7 @@ export class GraficaComponent implements OnInit {
   }
 
   noMostrarNada() {
-    this.mostrartodo = false;
+    this.mostrartodo = true;
     if (this.cambio === true) {
       this.cambio = false;
     } else {

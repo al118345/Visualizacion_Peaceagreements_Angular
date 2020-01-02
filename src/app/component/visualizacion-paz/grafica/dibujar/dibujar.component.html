@@ -5,13 +5,12 @@
   <div class="col-md-1"></div>
   <div class="col-md-10">
     <canvas class="grafica" baseChart
-            [datasets]="lineChartData"
-            [labels]="lineChartLabels"
-            [options]="lineChartOptions"
-            [legend]="lineChartLegend"
-            [chartType]="lineChartType"
-            (chartClick)="chartClicked($event)">
-      ></canvas>
+            [datasets]="this.lineChartData"
+            [labels]="this.lineChartLabels"
+            [options]="this.lineChartOptions"
+            [legend]="this.lineChartLegend"
+            [chartType]="this.lineChartType"
+            (chartClick)="chartClicked($event)"> </canvas>
   </div>
   <div class="col-md-1"></div>
 </div>

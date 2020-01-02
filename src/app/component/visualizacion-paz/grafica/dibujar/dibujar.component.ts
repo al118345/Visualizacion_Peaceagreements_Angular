@@ -3,19 +3,25 @@ import {Item} from '../../../../model/Factura';
 import {DatePipe} from '@angular/common';
 import {Pais} from '../../../../model/Pais';
 import {Tratados} from '../../../../model/Tratados';
+import {ChartDirectivesDirective} from '../../../../directives/chart-directives.directive';
+import { BaseChartDirective } from 'ng2-charts';
+
+
+
+
 
 @Component({
   selector: 'app-dibujar',
   templateUrl: './dibujar.component.html',
   styleUrls: ['./dibujar.component.css']
 })
-export class DibujarComponent implements OnInit, OnChanges {
+export class DibujarComponent implements OnInit, OnChanges{
 
   @Input() paises: Array<Pais>;
   @Input() tratados: Array<Tratados>;
   @Input() todo: boolean;
   @Input() nada: boolean;
-  paises_seleccionados = [];
+  almacenar_cambio: boolean;
   mostrarinformacion: number;
   texto_tratado = '';
 
@@ -28,13 +34,14 @@ export class DibujarComponent implements OnInit, OnChanges {
   };
   public lineChartLegend = true;
   public lineChartType:string = 'line';
-  public TipoGrafica: string = 'Ver lineas';
 
 
 
 
   ngOnInit() {
-
+      alert(this.todo);
+      this.lineChartData = [];
+      this.almacenar_cambio = this.nada;
       this.mostrarinformacion = 0;
       const lenght = this.paises.length;
       let iterator = 0;
@@ -69,7 +76,7 @@ export class DibujarComponent implements OnInit, OnChanges {
           this.lineChartData[contador_array].pointRadius.push(3);
           this.lineChartData[contador_array].pointStyle.push('circle');
         }
-        if ( contador_array === 0 ) {
+        if ( contador_array === 0  && this.lineChartLabels.length < 58) {
           this.lineChartLabels.push(this.pais.nombres);
         }
         iterator++;
@@ -110,11 +117,15 @@ export class DibujarComponent implements OnInit, OnChanges {
     }
   }
 
-  ngOnChanges(changes: SimpleChanges) {
-   this.lineChartData = [];
-   this.lineChartLabels  = [];
-    this.ngOnInit();
 
-    // changes.prop contains the old and the new value...
+
+  ngOnChanges(changes: SimpleChanges) {
+    if (this.nada !== this.almacenar_cambio) {
+      this.ngOnInit()
+    }
   }
+
+
+
+
 }
