@@ -58,6 +58,10 @@ import { AngularFireDatabaseModule } from '@angular/fire/database';
 import {DibujarComponent} from './component/visualizacion-paz/grafica/dibujar/dibujar.component';
 import {TratadosInformacionComponent} from './component/visualizacion-paz/grafica/dibujar/tratados-informacion/tratados-informacion.component';
 import { MundoWebComponent } from './component/visualizacion-paz/mundo-web/mundo-web.component';
+import { BarComponent } from './component/visualizacion-paz/mundo-web/bar/bar.component';
+import {Ng5SliderModule} from 'ng5-slider';
+import { BubleChartComponent } from './component/visualizacion-paz/mundo-web/buble-chart/buble-chart.component';
+import { SafeUrlPipe } from './pipe/safe-url.pipe';
 
 @NgModule({
   declarations: [
@@ -95,7 +99,10 @@ import { MundoWebComponent } from './component/visualizacion-paz/mundo-web/mundo
     DibujarComponent,
     DibujarComponent,
     TratadosInformacionComponent,
-    MundoWebComponent
+    MundoWebComponent,
+    BarComponent,
+    BubleChartComponent,
+    SafeUrlPipe
 
   ],
   imports: [
@@ -111,6 +118,7 @@ import { MundoWebComponent } from './component/visualizacion-paz/mundo-web/mundo
     AngularFireStorageModule,
     ReactiveFormsModule,
     ChartsModule,
+    Ng5SliderModule,
     routing,
     NgxPaginationModule,
     DeviceDetectorModule.forRoot(),

@@ -1,0 +1,9 @@
+<div class="chart-wrapper">
+  <canvas baseChart height="700"
+          [datasets]="this.bubbleChartData"
+          [options]="bubbleChartOptions"
+          [colors]="bubbleChartColors"
+          [legend]="bubbleChartLegend"
+          [chartType]="bubbleChartType"                      (chartHover)="chartHovered($event)">
+  </canvas>
+</div>
