@@ -1,8 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {FacturasService} from '../../../service/facturas.service';
-import {DataService} from '../../../service/dataservice';
 import {FirebaseService} from '../../../service/firebase.service';
-import {Item} from '../../../model/Factura';
 import {Pais} from '../../../model/Pais';
 import {Tratados} from '../../../model/Tratados';
 

@@ -1,7 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { ChartOptions, ChartType, ChartDataSets } from 'chart.js';
+import {ChartOptions, ChartType, ChartDataSets, ChartPoint} from 'chart.js';
 import { Color } from 'ng2-charts';
 
+
+export interface Prueba {
+  x: number;
+  y: number;
+  r: number;
+};
 
 @Component({
   selector: 'app-buble-chart',
@@ -12,8 +18,7 @@ export class BubleChartComponent implements OnInit {
   public bubbleChartOptions: ChartOptions;
   public bubbleChartType: ChartType = 'bubble';
   public bubbleChartLegend = true;
-  //public bubbleChartData: ChartDataSets[];
-  public bubbleChartData: Array<any>;
+  public bubbleChartData: ChartDataSets[];
   public labels = [];
 
   public bubbleChartColors: Color[] = [
@@ -54,15 +59,6 @@ export class BubleChartComponent implements OnInit {
     this.labels = this.labels.reverse();
     this.bubbleChartData = [];
 
-    const lenght = this.labels.length;
-    let iterator = 0;
-    while (iterator < lenght) {
-      this.bubbleChartData.push({
-        data: info[iterator],
-        label: this.labels[iterator]
-      })
-      iterator ++;
-    }
     this.bubbleChartData = [
       {
         data: [
@@ -109,12 +105,10 @@ export class BubleChartComponent implements OnInit {
         display: false
       }, tooltips: {
         callbacks: {
-          label: function(tooltipItem, data) {
-            //alert(JSON.stringify(data.datasets[0].data));
-           // alert(JSON.stringify(tooltipItem))
-            var aux: number;
-            aux= data.datasets[0].data[tooltipItem.index].r;
-            return "Cantidad de tratados:" +  data.datasets[0].data[tooltipItem.index].r * 12;
+          label: function(tooltipItem, data ) {
+            let aux: Prueba;
+            aux = data.datasets[ 0].data[tooltipItem.index] as Prueba;
+            return "Cantidad de tratados:" +  aux.r * 12;
           }
 
         }}

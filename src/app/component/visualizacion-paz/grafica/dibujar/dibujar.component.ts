@@ -1,5 +1,4 @@
 import {Component, ElementRef, Input, OnChanges, OnInit, SimpleChanges, ViewChild} from '@angular/core';
-import {Item} from '../../../../model/Factura';
 import {DatePipe} from '@angular/common';
 import {Pais} from '../../../../model/Pais';
 import {Tratados} from '../../../../model/Tratados';
