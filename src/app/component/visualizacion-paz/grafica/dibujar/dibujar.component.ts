@@ -37,7 +37,6 @@ export class DibujarComponent implements OnInit, OnChanges{
 
 
   ngOnInit() {
-      alert(this.todo);
       this.lineChartData = [];
       this.almacenar_cambio = this.nada;
       this.mostrarinformacion = 0;
