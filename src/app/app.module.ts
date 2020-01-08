@@ -32,6 +32,7 @@ import { BarComponent } from './component/visualizacion-paz/mundo-web/bar/bar.co
 import {Ng5SliderModule} from 'ng5-slider';
 import { BubleChartComponent } from './component/visualizacion-paz/mundo-web/buble-chart/buble-chart.component';
 import { SafeUrlPipe } from './pipe/safe-url.pipe';
+import { APP_BASE_HREF } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -73,7 +74,7 @@ import { SafeUrlPipe } from './pipe/safe-url.pipe';
     AngularFireAuthModule, BrowserAnimationsModule // imports firebase/auth, only needed for auth features
   ],
   providers: [
-    DatePipe ],
+DatePipe , {provide: APP_BASE_HREF, useValue: '/pruebas_master/visualizacion_de_datos/dist/'} ],
   bootstrap: [AppComponent],
   schemas:      [ CUSTOM_ELEMENTS_SCHEMA ]
 })
